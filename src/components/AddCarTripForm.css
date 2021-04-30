@@ -1,0 +1,39 @@
+.add-car-trip-form {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-evenly;
+}
+
+.add-car-trip-distanceinput {
+  height: 30px;
+  width: 100px;
+  border-radius: 10px;
+  border: none;
+  text-indent: 4px;
+  box-shadow: 2px 4px 4px;
+}
+
+.add-car-trip-datepicker {
+  height: 30px;
+  width: 120px;
+  border-radius: 10px;
+  border: none;
+  text-indent: 4px;
+  box-shadow: 2px 4px 4px;
+}
+
+.add-car-trip-select {
+  margin: 20px;
+  width: 200px;
+  height: 30px;
+}
+
+.calculate-co2-button {
+  width: 210px;
+  height: 47px;
+  margin: 10px;
+  background-color: var(--color-green);
+  border-radius: 25px;
+  font-family: "Helvetica Neue", sans-serif;
+  border: none;
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="46.619" height="41.004" viewBox="0 0 46.619 41.004">
+  <defs>
+    <filter id="Icon_awesome-home" x="0" y="0" width="46.619" height="41.004" filterUnits="userSpaceOnUse">
+      <feOffset dx="4" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Icon_awesome-home)">
+    <path id="Icon_awesome-home-2" data-name="Icon awesome-home" d="M16.849,9.778,5.769,19.61V30.221a1,1,0,0,0,.962,1.036l6.735-.019a1,1,0,0,0,.957-1.036v-6.2a1,1,0,0,1,.962-1.036H19.23a1,1,0,0,1,.962,1.036V30.2a1.078,1.078,0,0,0,.281.735.928.928,0,0,0,.681.3l6.732.02a1,1,0,0,0,.962-1.036V19.6L17.769,9.778A.692.692,0,0,0,16.849,9.778Zm17.5,6.683L29.328,12V3.03a.751.751,0,0,0-.721-.777H25.241a.751.751,0,0,0-.721.777v4.7L19.139,2.963a2.727,2.727,0,0,0-3.666,0L.261,16.46a.819.819,0,0,0-.1,1.094L1.7,19.562a.707.707,0,0,0,.488.28.687.687,0,0,0,.528-.174L16.849,7.123a.692.692,0,0,1,.919,0L31.906,19.667a.686.686,0,0,0,1.016-.1l1.532-2.007a.819.819,0,0,0,.16-.571.8.8,0,0,0-.263-.525Z" transform="translate(2 3.75)" fill="#2e3557"/>
+  </g>
+</svg>

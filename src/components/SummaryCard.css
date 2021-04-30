@@ -1,0 +1,14 @@
+.summary-card {
+  height: 300px;
+  width: 300px;
+  background-color: var(--color-white);
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px var(--color-white);
+  display: flex;
+  justify-content: space-between;
+}
+
+.period-select-box {
+  height: 10px;
+  width: 100px;
+}

@@ -1,0 +1,51 @@
+.add-flight-form {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-evenly;
+}
+
+.add-flight-passengers {
+  text-indent: 4px;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  width: 150px;
+}
+
+.add-flight-datepicker {
+  height: 30px;
+  width: 150px;
+  border-radius: 10px;
+  border: none;
+  text-indent: 4px;
+  box-shadow: 2px 4px 4px;
+}
+
+.add-flight-airport-input {
+  margin: 20px;
+  height: 30px;
+  width: 150px;
+  border-radius: 10px;
+  border: none;
+  text-indent: 4px;
+  box-shadow: 2px 4px 4px;
+}
+.add-flight-calculate-button {
+  width: 210px;
+  height: 47px;
+  margin: 10px;
+  background-color: var(--color-green);
+  border-radius: 25px;
+  font-family: "Helvetica Neue", sans-serif;
+  border: none;
+}
+
+.add-flight-addtrip-button {
+  width: 210px;
+  height: 47px;
+  margin: 10px;
+  background-color: var(--color-purple);
+  border-radius: 25px;
+  font-family: "Helvetica Neue", sans-serif;
+  border: none;
+}

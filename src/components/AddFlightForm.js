@@ -1,35 +1,94 @@
-import "./AddCarTripForm.css";
+import "./AddFlightForm.css";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { getItemsFromLocalStorage, addItemToLocalStorage } from "./tripStorage";
 
 export default function AddFlightForm() {
-  const [passengers, setPassengers] = useState("0");
-  const [date, setDate] = useState("Pick the date");
-  const [departure, setDeparture] = useState("departure airport");
-  const [destination, setDestination] = useState("destination airport");
+  const [passengers, setPassengers] = useState();
+  const [date, setDate] = useState(new Date());
+  const [departure, setDeparture] = useState("");
+  const [destination, setDestination] = useState("");
 
-  function handleSubmit(event) {}
+  function handleSubmit(event) {
+    event.preventDefault();
 
-  function handleChange(event) {}
+    const tripItem = {
+      passengers,
+      date,
+      departure,
+      destination,
+    };
+    console.log(tripItem);
+    const requestItem = {
+      passengers,
+      departure,
+      destination,
+    };
+
+    addItemToLocalStorage(tripItem);
+  }
+  function handleAddTrip() {}
+  function handlePassengerChange(event) {
+    const { value } = event.target;
+    setPassengers(value);
+  }
+
+  function handleDateChange(date) {
+    setDate(date);
+  }
+
+  function handleDestinationChange(event) {
+    setDestination(event.target.value);
+  }
+
+  function handleDepartureChange(event) {
+    const { value } = event.target;
+    setDeparture(value);
+  }
 
   return (
-    <form className="add-car-trip-form" onSubmit={handleSubmit}>
-      <input type="number"></input>
-      <DatePicker className="add-car-trip-datepicker" value={date}></DatePicker>
-      <input className="" type="text" value={departure} />
+    <div>
+      <form className="add-flight-form" onSubmit={handleSubmit}>
+        <input
+          type="number"
+          className="add-flight-passengers"
+          placeholder="Number of passengers"
+          value={passengers}
+          onChange={handlePassengerChange}
+        ></input>
 
-      <input
-        className=""
-        type="text"
-        value={destination}
-        onChange={handleChange}
-      />
+        <DatePicker
+          className="add-flight-datepicker"
+          selected={date}
+          onChange={handleDateChange}
+        ></DatePicker>
+        <input
+          className="add-flight-airport-input"
+          type="text"
+          placeholder="Departure airport"
+          name="departureAirport"
+          value={departure}
+          onChange={handleDepartureChange}
+        />
 
-      <button className="calculate-co2-button" type="submit">
-        Calculate CO2 emission
-      </button>
-      <p>Emission:</p>
-    </form>
+        <input
+          className="add-flight-airport-input"
+          type="text"
+          placeholder="Destination airport"
+          value={destination}
+          onChange={handleDestinationChange}
+        />
+        <div>
+          <button className="add-flight-calculate-button" type="submit">
+            Calculate CO2 emission
+          </button>
+          <p>Emission:</p>
+          <button className="add-flight-addtrip-button" onClick={handleAddTrip}>
+            Add to My Trips
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }

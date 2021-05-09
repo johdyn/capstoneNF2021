@@ -1,4 +1,5 @@
 .add-trip-container {
   background-image: url("../images/Background-image.png");
+  background-image: cover;
   height: 100%;
 }

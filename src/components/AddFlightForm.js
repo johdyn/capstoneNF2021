@@ -3,32 +3,45 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { getItemsFromLocalStorage, addItemToLocalStorage } from "./tripStorage";
+import fetchFlightEstimate from "../services/FetchFlightEstimate";
 
 export default function AddFlightForm() {
   const [passengers, setPassengers] = useState();
   const [date, setDate] = useState(new Date());
   const [departure, setDeparture] = useState("");
   const [destination, setDestination] = useState("");
+  const [estimateObject, setEstimateObject] = useState();
+
+  console.log(estimateObject);
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    const tripItem = {
+    const requestItem = {
       passengers,
       date,
       departure,
       destination,
     };
-    console.log(tripItem);
-    const requestItem = {
+    fetchFlightEstimate({ requestItem }).then((estimate) => {
+      setEstimateObject(estimate);
+      console.log(estimate);
+    });
+  }
+  function handleAddTrip() {
+    const carbon = Math.round(estimateObject.data.attributes.carbon_kg);
+    const distance = Math.round(estimateObject.data.attributes.distance_value);
+    const tripItem = {
       passengers,
+      date,
       departure,
       destination,
+      carbon,
+      distance,
     };
 
     addItemToLocalStorage(tripItem);
   }
-  function handleAddTrip() {}
+
   function handlePassengerChange(event) {
     const { value } = event.target;
     setPassengers(value);
@@ -83,7 +96,10 @@ export default function AddFlightForm() {
           <button className="add-flight-calculate-button" type="submit">
             Calculate CO2 emission
           </button>
-          <p>Emission:</p>
+          <p className="add-flight-emission-paragraph">
+            Emission in kg:
+            {estimateObject && estimateObject.data.attributes.carbon_kg}
+          </p>
           <button className="add-flight-addtrip-button" onClick={handleAddTrip}>
             Add to My Trips
           </button>

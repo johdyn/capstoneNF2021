@@ -1,7 +1,13 @@
-import generateID from "./generateID";
+import generateID from "../services/generateID";
 
 export function getItemsFromLocalStorage() {
   const items = JSON.parse(localStorage.getItem("items")) || [];
+
+  return items;
+}
+
+export function getCarItemsFromLocalStorage() {
+  const items = JSON.parse(localStorage.getItem("carItems")) || [];
 
   return items;
 }
@@ -11,6 +17,13 @@ export function addItemToLocalStorage(item) {
   item.id = generateID();
   items.push(item);
   localStorage.setItem("items", JSON.stringify(items));
+}
+
+export function addCarItemToLocalStorage(item) {
+  const items = getCarItemsFromLocalStorage();
+  item.id = generateID();
+  items.push(item);
+  localStorage.setItem("carItems", JSON.stringify(items));
 }
 
 export function removeItemFromLocalStorage(itemID) {

@@ -5,6 +5,9 @@ import { useState } from "react";
 
 export default function Triplist() {
   const [tripItems, setTripItems] = useState(getItemsFromLocalStorage);
+  const [carTripItems, setCarTripItems] = useState();
+  const [flightTripItems, setFlightTripItems] = useState();
+
   console.log(tripItems);
   function handleRemoveItem(itemID) {
     removeItemFromLocalStorage(itemID);
@@ -19,8 +22,10 @@ export default function Triplist() {
             id={item.id}
             date={item.date}
             passengers={item.passengers}
-            destination={item.destination}
             departure={item.departure}
+            destination={item.destination}
+            distance={item.distance}
+            carbon={item.carbon}
             onRemove={() => handleRemoveItem(item.id)}
           />
         );

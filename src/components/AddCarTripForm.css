@@ -37,3 +37,17 @@
   font-family: "Helvetica Neue", sans-serif;
   border: none;
 }
+
+.add-car-addtrip-button {
+  width: 210px;
+  height: 47px;
+  margin: 10px;
+  background-color: var(--color-purple);
+  border-radius: 25px;
+  font-family: "Helvetica Neue", sans-serif;
+  border: none;
+}
+
+.add-car-emission-paragraph {
+  color: var(--color-white);
+}

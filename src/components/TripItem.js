@@ -12,10 +12,11 @@ export default function TripItem({
   distance,
   onRemove,
 }) {
-  const showDate = date.slice(0, 10);
+  const newDate = new Date(date).toLocaleDateString("de-DE");
+
   return (
     <article className="trip-item">
-      <h5 className="trip-item-date">{showDate}:</h5>
+      <h5 className="trip-item-date">{newDate}:</h5>
       <div className="text-container">
         <p>Passengers: {passengers}</p>
         <p>Departure: {departure}</p>

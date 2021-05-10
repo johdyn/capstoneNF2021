@@ -48,7 +48,9 @@ export default function AddFlightForm() {
   }
 
   function handleDateChange(date) {
-    setDate(date);
+    const newDate = date.target.value;
+
+    setDate(newDate);
   }
 
   function handleDestinationChange(event) {
@@ -71,11 +73,13 @@ export default function AddFlightForm() {
           onChange={handlePassengerChange}
         ></input>
 
-        <DatePicker
+        <input
+          type="date"
           className="add-flight-datepicker"
-          selected={date}
+          value={date}
+          pattern="\d{4}-\d{2}-\d{2}"
           onChange={handleDateChange}
-        ></DatePicker>
+        ></input>
         <input
           className="add-flight-airport-input"
           type="text"

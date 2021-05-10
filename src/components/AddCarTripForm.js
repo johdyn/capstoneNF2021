@@ -13,17 +13,22 @@ export default function AddCarTripForm() {
   const [distance, setDistance] = useState("");
   const [date, setDate] = useState(new Date());
   const [vehicleMakes, setVehicleMakes] = useState([]);
-  const [vehicleModels, setVehicleModels] = useState([]);
+  const [vehicleModels, setVehicleModels] = useState();
   const [selectVehicleMake, setSelectVehicleMake] = useState();
   const [selectVehicleID, setSelectVehicleID] = useState();
   const [selectVehicleModel, setSelectVehicleModel] = useState();
+  const [displayVehicleModels, setDisplayVehicleModels] = useState([]);
   const [selectVehicleModelID, setSelectVehicleModelID] = useState();
   const [estimate, setEstimate] = useState();
   const [displayEstimate, setDisplayEstimate] = useState();
+  const modelSet = new Set();
+
   console.log(vehicleMakes);
+  console.log(vehicleModels);
   console.log(selectVehicleMake);
   console.log(selectVehicleID);
   console.log(estimate);
+  console.log(displayEstimate);
 
   useEffect(() => {
     console.log("first render");
@@ -39,12 +44,8 @@ export default function AddCarTripForm() {
   }
 
   function renderVehicleModelOptions() {
-    return vehicleModels.map((item) => {
-      return (
-        <option>
-          {item.data.attributes.name}, {item.data.attributes.year}
-        </option>
-      );
+    return displayVehicleModels.map((item) => {
+      return <option>{item}</option>;
     });
   }
   function handleSubmit(event) {
@@ -91,6 +92,16 @@ export default function AddCarTripForm() {
     console.log(vehicleID);
     fetchVehicleModels(vehicleID).then((models) => {
       setVehicleModels(models);
+      models.map((item) => {
+        return modelSet.add(
+          item.data.attributes.name + ", " + item.data.attributes.year
+        );
+      });
+      console.log(modelSet);
+      const displayArray = Array.from(modelSet);
+      displayArray.sort();
+
+      setDisplayVehicleModels(displayArray);
     });
   }
 
@@ -102,7 +113,6 @@ export default function AddCarTripForm() {
     console.log(commaIndex);
     const selectedName = value.slice(0, commaIndex);
     console.log(selectedName);
-    // const modelname = event.target.value.
     console.log(vehicleModels);
     const selectedModel = vehicleModels.find((model) => {
       return model.data.attributes.name === selectedName;

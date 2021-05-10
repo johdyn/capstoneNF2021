@@ -12,6 +12,11 @@ export function getCarItemsFromLocalStorage() {
   return items;
 }
 
+export function getFlightItemsFromLocalStorage() {
+  const items = JSON.parse(localStorage.getItem("flightItems")) || [];
+
+  return items;
+}
 export function addItemToLocalStorage(item) {
   const items = getItemsFromLocalStorage();
   item.id = generateID();
@@ -24,6 +29,13 @@ export function addCarItemToLocalStorage(item) {
   item.id = generateID();
   items.push(item);
   localStorage.setItem("carItems", JSON.stringify(items));
+}
+
+export function addFlightItemToLocalStorage(item) {
+  const items = getFlightItemsFromLocalStorage();
+  item.id = generateID();
+  items.push(item);
+  localStorage.setItem("flightItems", JSON.stringify(items));
 }
 
 export function removeItemFromLocalStorage(itemID) {

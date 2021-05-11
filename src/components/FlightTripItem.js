@@ -1,8 +1,7 @@
 import "./TripItem.css";
 import { FaTrashAlt } from "react-icons/fa";
-import { removeItemFromLocalStorage } from "./tripStorage";
 
-export default function TripItem({
+export default function FlightTripItem({
   id,
   date,
   passengers,

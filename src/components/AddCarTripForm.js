@@ -15,20 +15,11 @@ export default function AddCarTripForm() {
   const [vehicleMakes, setVehicleMakes] = useState([]);
   const [vehicleModels, setVehicleModels] = useState();
   const [selectVehicleMake, setSelectVehicleMake] = useState();
-  const [selectVehicleID, setSelectVehicleID] = useState();
   const [selectVehicleModel, setSelectVehicleModel] = useState();
   const [displayVehicleModels, setDisplayVehicleModels] = useState([]);
   const [selectVehicleModelID, setSelectVehicleModelID] = useState();
   const [estimate, setEstimate] = useState();
-  const [displayEstimate, setDisplayEstimate] = useState();
   const modelSet = new Set();
-
-  console.log(vehicleMakes);
-  console.log(vehicleModels);
-  console.log(selectVehicleMake);
-  console.log(selectVehicleID);
-  console.log(estimate);
-  console.log(displayEstimate);
 
   useEffect(() => {
     console.log("first render");
@@ -57,18 +48,19 @@ export default function AddCarTripForm() {
     };
 
     fetchVehicleEstimate(requestItem).then((estimate) => {
-      setDisplayEstimate(estimate.data.attributes.carbon_kg);
-      setEstimate(estimate);
+      setEstimate(estimate.data.attributes.carbon_kg);
     });
   }
 
   function handleAddTrip() {
+    const carbon = Math.round(estimate);
     const tripItem = {
       date,
       distance,
-      displayEstimate,
+      selectVehicleMake,
+      selectVehicleModel,
+      carbon,
     };
-
     addCarItemToLocalStorage(tripItem);
   }
 
@@ -81,15 +73,12 @@ export default function AddCarTripForm() {
   }
 
   function handleVehicleMakeChange(event) {
-    console.log(vehicleMakes);
     const selectedVehicle = vehicleMakes.find((make) => {
       return make.data.attributes.name === event.target.value;
     });
 
-    console.log(selectedVehicle);
     setSelectVehicleMake(selectedVehicle.data.attributes.name);
     const vehicleID = selectedVehicle.data.id;
-    console.log(vehicleID);
     fetchVehicleModels(vehicleID).then((models) => {
       setVehicleModels(models);
       models.map((item) => {
@@ -97,27 +86,20 @@ export default function AddCarTripForm() {
           item.data.attributes.name + ", " + item.data.attributes.year
         );
       });
-      console.log(modelSet);
       const displayArray = Array.from(modelSet);
       displayArray.sort();
-
       setDisplayVehicleModels(displayArray);
     });
   }
 
   function handleVehicleModelChange(event) {
-    console.log(event.target.value);
     setSelectVehicleModel(event.target.value);
     const value = event.target.value;
     const commaIndex = value.indexOf(",");
-    console.log(commaIndex);
     const selectedName = value.slice(0, commaIndex);
-    console.log(selectedName);
-    console.log(vehicleModels);
     const selectedModel = vehicleModels.find((model) => {
       return model.data.attributes.name === selectedName;
     });
-    console.log(selectedModel);
 
     setSelectVehicleModelID(selectedModel.data.id);
   }
@@ -133,6 +115,7 @@ export default function AddCarTripForm() {
       />
       <DatePicker
         className="add-car-trip-datepicker"
+        dateFormat="dd/MM/yyyy"
         selected={date}
         onChange={handleDateChange}
       ></DatePicker>
@@ -154,9 +137,7 @@ export default function AddCarTripForm() {
         <button className="calculate-co2-button" type="submit">
           Calculate CO2 emission
         </button>
-        <p className="add-car-emission-paragraph">
-          Emission in kg:{displayEstimate}
-        </p>
+        <p className="add-car-emission-paragraph">Emission in kg:{estimate}</p>
         <button className="add-car-addtrip-button" onClick={handleAddTrip}>
           Add to My Trips
         </button>

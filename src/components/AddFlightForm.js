@@ -1,8 +1,6 @@
 import "./AddFlightForm.css";
 import { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { getItemsFromLocalStorage, addItemToLocalStorage } from "./tripStorage";
+import { addFlightItemToLocalStorage } from "./tripStorage";
 import fetchFlightEstimate from "../services/FetchFlightEstimate";
 
 export default function AddFlightForm() {
@@ -39,7 +37,7 @@ export default function AddFlightForm() {
       distance,
     };
 
-    addItemToLocalStorage(tripItem);
+    addFlightItemToLocalStorage(tripItem);
   }
 
   function handlePassengerChange(event) {

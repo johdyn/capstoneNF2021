@@ -1,11 +1,5 @@
 import generateID from "../services/generateID";
 
-export function getItemsFromLocalStorage() {
-  const items = JSON.parse(localStorage.getItem("items")) || [];
-
-  return items;
-}
-
 export function getCarItemsFromLocalStorage() {
   const items = JSON.parse(localStorage.getItem("carItems")) || [];
 
@@ -16,12 +10,6 @@ export function getFlightItemsFromLocalStorage() {
   const items = JSON.parse(localStorage.getItem("flightItems")) || [];
 
   return items;
-}
-export function addItemToLocalStorage(item) {
-  const items = getItemsFromLocalStorage();
-  item.id = generateID();
-  items.push(item);
-  localStorage.setItem("items", JSON.stringify(items));
 }
 
 export function addCarItemToLocalStorage(item) {
@@ -38,11 +26,18 @@ export function addFlightItemToLocalStorage(item) {
   localStorage.setItem("flightItems", JSON.stringify(items));
 }
 
-export function removeItemFromLocalStorage(itemID) {
-  const items = getItemsFromLocalStorage();
-  console.log(itemID);
+export function removeCarItemFromLocalStorage(itemID) {
+  const items = getCarItemsFromLocalStorage();
   const newItems = items.filter((item) => {
     return item.id !== itemID;
   });
-  localStorage.setItem("items", JSON.stringify(newItems));
+  localStorage.setItem("carItems", JSON.stringify(newItems));
+}
+
+export function removeFlightItemFromLocalStorage(itemID) {
+  const items = getFlightItemsFromLocalStorage();
+  const newItems = items.filter((item) => {
+    return item.id !== itemID;
+  });
+  localStorage.setItem("flightItems", JSON.stringify(newItems));
 }

@@ -1,5 +1,9 @@
 .add-trip-container {
   background-image: url("../images/Background-image.png");
-  background-image: cover;
+  background-size: cover;
   height: 100%;
+}
+
+.add-trip-header {
+  margin: 0px;
 }

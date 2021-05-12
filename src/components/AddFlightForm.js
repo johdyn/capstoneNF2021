@@ -10,8 +10,6 @@ export default function AddFlightForm() {
   const [destination, setDestination] = useState("");
   const [estimateObject, setEstimateObject] = useState();
 
-  console.log(estimateObject);
-
   function handleSubmit(event) {
     event.preventDefault();
     const requestItem = {
@@ -42,7 +40,9 @@ export default function AddFlightForm() {
 
   function handlePassengerChange(event) {
     const { value } = event.target;
-    setPassengers(value);
+    if (value > 0) {
+      setPassengers(value);
+    } else setPassengers(0);
   }
 
   function handleDateChange(date) {
@@ -69,6 +69,7 @@ export default function AddFlightForm() {
           placeholder="Number of passengers"
           value={passengers}
           onChange={handlePassengerChange}
+          required
         ></input>
 
         <input
@@ -77,6 +78,7 @@ export default function AddFlightForm() {
           value={date}
           pattern="\d{4}-\d{2}-\d{2}"
           onChange={handleDateChange}
+          required
         ></input>
         <input
           className="add-flight-airport-input"
@@ -85,6 +87,7 @@ export default function AddFlightForm() {
           name="departureAirport"
           value={departure}
           onChange={handleDepartureChange}
+          required
         />
 
         <input
@@ -93,6 +96,7 @@ export default function AddFlightForm() {
           placeholder="Destination airport"
           value={destination}
           onChange={handleDestinationChange}
+          required
         />
         <div>
           <button className="add-flight-calculate-button" type="submit">

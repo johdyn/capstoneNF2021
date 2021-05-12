@@ -5,11 +5,10 @@ import "./Triplist.css";
 import {
   getCarItemsFromLocalStorage,
   getFlightItemsFromLocalStorage,
-} from "./tripStorage";
-import {
   removeFlightItemFromLocalStorage,
   removeCarItemFromLocalStorage,
 } from "./tripStorage";
+
 import { useState } from "react";
 
 export default function Triplist() {

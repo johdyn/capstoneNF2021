@@ -14,13 +14,16 @@ export default function CarTripItem({
 
   return (
     <article className="trip-item">
-      <h5 className="trip-item-date">{newDate}:</h5>
+      <h2 className="trip-item-date">{newDate}</h2>
       <div className="text-container">
-        <p>{vehicleMake}</p>
-        <p>Model: {vehicleModel}</p>
-        <p className="paragraph">Distance: {distance} km</p>
-        <p>CO2 Emission: {estimate} kg </p>
+        <p className="paragraph">{vehicleMake}</p>
+
+        <p className="paragraph">{vehicleModel}</p>
+
+        <p className="paragraph">{distance} km</p>
+        <p className="paragraph">CO2: {estimate} kg </p>
       </div>
+
       <FaTrashAlt className="trip-item-delete" onClick={onRemove} />
     </article>
   );

@@ -1,7 +1,6 @@
 import "./AddCarTripForm.css";
 import { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { useHistory } from "react-router-dom";
 import { addCarItemToLocalStorage } from "./tripStorage";
 import {
   fetchVehicleEstimate,
@@ -18,11 +17,11 @@ export default function AddCarTripForm() {
   const [selectVehicleModel, setSelectVehicleModel] = useState();
   const [displayVehicleModels, setDisplayVehicleModels] = useState([]);
   const [selectVehicleModelID, setSelectVehicleModelID] = useState();
-  const [estimate, setEstimate] = useState();
+  const [carbonEstimate, setCarbonEstimate] = useState();
+  const history = useHistory();
   const modelSet = new Set();
 
   useEffect(() => {
-    console.log("first render");
     fetchVehicleMakes().then((makes) => {
       setVehicleMakes(makes);
     });
@@ -48,12 +47,12 @@ export default function AddCarTripForm() {
     };
 
     fetchVehicleEstimate(requestItem).then((estimate) => {
-      setEstimate(estimate.data.attributes.carbon_kg);
+      setCarbonEstimate(estimate.data.attributes.carbon_kg);
     });
   }
 
   function handleAddTrip() {
-    const carbon = Math.round(estimate);
+    const carbon = Math.round(carbonEstimate);
     const tripItem = {
       date,
       distance,
@@ -62,6 +61,7 @@ export default function AddCarTripForm() {
       carbon,
     };
     addCarItemToLocalStorage(tripItem);
+    history.push("/");
   }
 
   function handleDistanceChange(event) {
@@ -69,7 +69,8 @@ export default function AddCarTripForm() {
   }
 
   function handleDateChange(date) {
-    setDate(date);
+    const newDate = date.target.value;
+    setDate(newDate);
   }
 
   function handleVehicleMakeChange(event) {
@@ -112,13 +113,17 @@ export default function AddCarTripForm() {
         placeholder="Distance in km"
         value={distance}
         onChange={handleDistanceChange}
+        required
       />
-      <DatePicker
-        className="add-car-trip-datepicker"
-        dateFormat="dd/MM/yyyy"
-        selected={date}
+      <input
+        type="date"
+        className="add-flight-datepicker"
+        value={date}
+        pattern="\d{4}-\d{2}-\d{2}"
         onChange={handleDateChange}
-      ></DatePicker>
+        required
+      ></input>
+
       <select
         value={selectVehicleMake}
         onChange={handleVehicleMakeChange}
@@ -134,10 +139,12 @@ export default function AddCarTripForm() {
         {renderVehicleModelOptions()}
       </select>
       <div>
-        <button className="calculate-co2-button" type="submit">
+        <button className="add-car-calculate-button" type="submit">
           Calculate CO2 emission
         </button>
-        <p className="add-car-emission-paragraph">Emission in kg:{estimate}</p>
+        <p className="add-car-emission-paragraph">
+          Emission in kg:{carbonEstimate}
+        </p>
         <button className="add-car-addtrip-button" onClick={handleAddTrip}>
           Add to My Trips
         </button>

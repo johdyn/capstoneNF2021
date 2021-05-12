@@ -1,35 +1,56 @@
 .trip-item {
   display: flex;
   flex-direction: row;
-  height: 150px;
+  padding: 1em;
+  height: 80px;
+  width: 300px;
   border-radius: 10px;
-  width: 280px;
+  /* background-color: rgba(0, 0, 0, 0.5);
+  color: #fff; */
   background-color: var(--color-white);
+  opacity: 0.9;
   color: var(--color-blue);
   box-shadow: 2px -2px 4px var(--color-white);
-}
-
-.trip-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.trip-item-delete {
-  margin-left: 20px;
-  margin-top: 20px;
-  font-size: 18px;
-}
-
-.text-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  margin-right: 20px;
+  justify-content: space-between;
+  text-align: left;
 }
 
 .trip-item-date {
   align-self: left;
   text-indent: 5px;
+  font-size: 14px;
+  margin-right: 2px;
 }
+
+.text-container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  /* margin-right: 20px;
+  margin-left: 10px; */
+  text-align: left;
+}
+.paragraph {
+  font-weight: 500;
+  font-size: 1em;
+}
+
+.trip-item-delete {
+  flex-grow: 1;
+  font-size: 20px;
+}
+
+/* h3 {
+  font-size: 14px;
+} */
+
+/* .trip-item-list {
+  display: flex;
+  flex-flow: column wrap;
+  list-style-position: outside;
+  /* position: fixed;
+  /* right: 0;
+  top: 50%;
+  width: 8em;
+  margin-top: -2.5em; */

@@ -28,3 +28,8 @@
   grid-row: footer;
   background-color: var(--color-blue);
 }
+
+h1 {
+  color: var(--color-white);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}

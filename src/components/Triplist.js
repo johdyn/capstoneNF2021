@@ -10,6 +10,7 @@ import {
 } from "./tripStorage";
 
 import { useState } from "react";
+import FilterButton from "./FilterButton";
 
 export default function Triplist() {
   const [carTripItems, setCarTripItems] = useState(getCarItemsFromLocalStorage);
@@ -31,15 +32,8 @@ export default function Triplist() {
   return (
     <div className="trip-container">
       <div className="button-container">
-        <button className="Triplist-button" onClick={() => setFilter("cars")}>
-          Car Trips
-        </button>
-        <button
-          className="Triplist-button"
-          onClick={() => setFilter("flights")}
-        >
-          Flights
-        </button>
+        <FilterButton text="Car Trips" onClick={() => setFilter("cars")} />
+        <FilterButton text="Flights" onClick={() => setFilter("flights")} />
       </div>
       {filter === "flights"
         ? flightTripItems

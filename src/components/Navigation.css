@@ -10,11 +10,16 @@
   height: 100%;
 }
 
+.selected {
+  fill: var(--color-blue);
+}
+
 .home-icon {
   font-size: 40px;
   color: var(--color-grey);
   text-shadow: 0 0 10px pink;
 }
+
 .chart-icon {
   font-size: 40px;
   color: var(--color-grey);

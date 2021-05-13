@@ -1,0 +1,9 @@
+.filter-button {
+  width: 110px;
+  height: 47px;
+  margin: 10px;
+  background-color: var(--color-purple);
+  border-radius: 25px;
+  font-family: "Helvetica Neue", sans-serif;
+  border: none;
+}

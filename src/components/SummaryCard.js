@@ -1,5 +1,7 @@
 import "./SummaryCard.css";
 
+import Chart from "chart.js";
+
 export default function SummaryCard() {
   return (
     <div className="summary-card">

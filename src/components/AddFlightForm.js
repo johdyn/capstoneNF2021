@@ -1,6 +1,7 @@
 import "./AddFlightForm.css";
 import { useState } from "react";
 import { addFlightItemToLocalStorage } from "./tripStorage";
+import Button from "./Button";
 import fetchFlightEstimate from "../services/FetchFlightEstimate";
 
 export default function AddFlightForm() {
@@ -9,6 +10,7 @@ export default function AddFlightForm() {
   const [departure, setDeparture] = useState("");
   const [destination, setDestination] = useState("");
   const [estimateObject, setEstimateObject] = useState();
+  const [showAddButton, setShowAddButton] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -20,7 +22,7 @@ export default function AddFlightForm() {
     };
     fetchFlightEstimate({ requestItem }).then((estimate) => {
       setEstimateObject(estimate);
-      console.log(estimate);
+      setShowAddButton(true);
     });
   }
   function handleAddTrip() {
@@ -99,18 +101,24 @@ export default function AddFlightForm() {
           required
         />
         <div>
-          <button className="add-flight-calculate-button" type="submit">
-            Calculate CO2 emission
-          </button>
+          <Button type="primary" text="Calculate CO2 emission"></Button>
+        </div>
+      </form>
+      <div className="estimate-add-button-container">
+        {estimateObject !== undefined ? (
           <p className="add-flight-emission-paragraph">
             Emission in kg:
             {estimateObject && estimateObject.data.attributes.carbon_kg}
           </p>
-          <button className="add-flight-addtrip-button" onClick={handleAddTrip}>
-            Add to My Trips
-          </button>
-        </div>
-      </form>
+        ) : null}
+        {showAddButton ? (
+          <Button
+            type="secondary"
+            text="Add to My Trips"
+            onClick={handleAddTrip}
+          ></Button>
+        ) : null}
+      </div>
     </div>
   );
 }

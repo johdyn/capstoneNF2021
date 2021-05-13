@@ -2,6 +2,7 @@ import "./AddCarTripForm.css";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { addCarItemToLocalStorage } from "./tripStorage";
+import Button from "./Button";
 import {
   fetchVehicleEstimate,
   fetchVehicleMakes,
@@ -18,12 +19,17 @@ export default function AddCarTripForm() {
   const [displayVehicleModels, setDisplayVehicleModels] = useState([]);
   const [selectVehicleModelID, setSelectVehicleModelID] = useState();
   const [carbonEstimate, setCarbonEstimate] = useState();
+  const [showAddButton, setShowAddButton] = useState(false);
   const history = useHistory();
   const modelSet = new Set();
+
+  console.log(selectVehicleMake);
+  console.log(selectVehicleModel);
 
   useEffect(() => {
     fetchVehicleMakes().then((makes) => {
       setVehicleMakes(makes);
+      setSelectVehicleMake(makes[0]);
     });
   }, []);
 
@@ -48,6 +54,7 @@ export default function AddCarTripForm() {
 
     fetchVehicleEstimate(requestItem).then((estimate) => {
       setCarbonEstimate(estimate.data.attributes.carbon_kg);
+      setShowAddButton(true);
     });
   }
 
@@ -60,8 +67,9 @@ export default function AddCarTripForm() {
       selectVehicleModel,
       carbon,
     };
+    console.log(tripItem);
     addCarItemToLocalStorage(tripItem);
-    history.push("/");
+    // history.push("/");
   }
 
   function handleDistanceChange(event) {
@@ -90,6 +98,8 @@ export default function AddCarTripForm() {
       const displayArray = Array.from(modelSet);
       displayArray.sort();
       setDisplayVehicleModels(displayArray);
+      setSelectVehicleModel(displayArray[0]);
+      console.log(selectVehicleModel);
     });
   }
 
@@ -106,49 +116,59 @@ export default function AddCarTripForm() {
   }
 
   return (
-    <form className="add-car-trip-form" onSubmit={handleSubmit}>
-      <input
-        className="add-car-trip-distanceinput"
-        type="text"
-        placeholder="Distance in km"
-        value={distance}
-        onChange={handleDistanceChange}
-        required
-      />
-      <input
-        type="date"
-        className="add-flight-datepicker"
-        value={date}
-        pattern="\d{4}-\d{2}-\d{2}"
-        onChange={handleDateChange}
-        required
-      ></input>
+    <div>
+      <form className="add-car-trip-form" onSubmit={handleSubmit}>
+        <input
+          className="add-car-trip-distanceinput"
+          type="text"
+          placeholder="Distance in km"
+          value={distance}
+          onChange={handleDistanceChange}
+          required
+        />
+        <input
+          type="date"
+          className="add-flight-datepicker"
+          value={date}
+          pattern="\d{4}-\d{2}-\d{2}"
+          onChange={handleDateChange}
+          required
+        ></input>
 
-      <select
-        value={selectVehicleMake}
-        onChange={handleVehicleMakeChange}
-        className="add-car-trip-select"
-      >
-        {renderVehicleMakeOptions()}
-      </select>
-      <select
-        value={selectVehicleModel}
-        onChange={handleVehicleModelChange}
-        className="add-car-trip-select"
-      >
-        {renderVehicleModelOptions()}
-      </select>
-      <div>
-        <button className="add-car-calculate-button" type="submit">
-          Calculate CO2 emission
-        </button>
-        <p className="add-car-emission-paragraph">
-          Emission in kg:{carbonEstimate}
-        </p>
-        <button className="add-car-addtrip-button" onClick={handleAddTrip}>
-          Add to My Trips
-        </button>
+        <select
+          value={selectVehicleMake}
+          onChange={handleVehicleMakeChange}
+          className="add-car-trip-select"
+          required
+        >
+          {renderVehicleMakeOptions()}
+        </select>
+        <select
+          value={selectVehicleModel}
+          onChange={handleVehicleModelChange}
+          className="add-car-trip-select"
+          required
+        >
+          {renderVehicleModelOptions()}
+        </select>
+        <div>
+          <Button type="primary" text="Calculate CO2 emission"></Button>
+        </div>
+      </form>
+      <div className="estimate-add-button-container">
+        {carbonEstimate !== undefined ? (
+          <p className="add-car-emission-paragraph">
+            Emission in kg:{carbonEstimate}
+          </p>
+        ) : null}
+        {showAddButton ? (
+          <Button
+            type="secondary"
+            text="Add to My Trips"
+            onClick={handleAddTrip}
+          ></Button>
+        ) : null}
       </div>
-    </form>
+    </div>
   );
 }

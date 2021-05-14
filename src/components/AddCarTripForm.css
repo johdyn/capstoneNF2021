@@ -4,28 +4,49 @@
   justify-content: space-evenly;
 }
 
+.distance-date-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 20px;
+}
+
 .add-car-trip-distanceinput {
   height: 30px;
-  width: 100px;
-  border-radius: 10px;
+  width: 150px;
+  border-radius: 5px;
   border: none;
   text-indent: 4px;
-  box-shadow: 2px 4px 4px;
+  box-shadow: 2px 2px 4px;
 }
 
 .add-car-trip-datepicker {
   height: 30px;
-  width: 120px;
-  border-radius: 10px;
+  width: 150px;
+  border-radius: 5px;
   border: none;
   text-indent: 4px;
-  box-shadow: 2px 4px 4px;
+  box-shadow: 2px 2px 4px;
 }
 
 .add-car-trip-select {
   margin: 20px;
   width: 200px;
   height: 30px;
+}
+
+.select-box-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+
+.select-class {
+  padding: 20px;
+  width: 310px;
+  padding: 0px;
+  box-shadow: 2px 4px 4px;
 }
 
 .add-car-calculate-button {

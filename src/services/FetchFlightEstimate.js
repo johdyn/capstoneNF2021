@@ -5,8 +5,8 @@ export default function fetchFlightEstimate({ requestItem }) {
     passengers: requestItem.passengers,
     legs: [
       {
-        departure_airport: requestItem.departure,
-        destination_airport: requestItem.destination,
+        departure_airport: requestItem.airportCodeDeparture,
+        destination_airport: requestItem.airportCodeDestination,
       },
     ],
   };

@@ -1,6 +1,5 @@
 import "./SummaryCard.css";
-import BarChart from "./BarChart";
-import Chart from "chart.js";
+import DoughnutChart from "./DoughnutChart";
 
 export default function SummaryCard() {
   return (
@@ -11,7 +10,9 @@ export default function SummaryCard() {
         <option>This month</option>
         <option>This year</option>
       </select>
-      <BarChart />
+      <div>
+        <DoughnutChart />
+      </div>{" "}
     </div>
   );
 }

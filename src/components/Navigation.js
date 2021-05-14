@@ -23,7 +23,7 @@ export default function Navigation() {
           onClick={() => setToggledIcon("home")}
         />
       </NavLink>
-      <NavLink to="/add-car" className="Nav-Link">
+      <NavLink to="/add-trip" className="Nav-Link">
         <FaPlus
           className={toggledIcon === "add" ? "selected plus-icon" : "plus-icon"}
           onClick={() => setToggledIcon("add")}

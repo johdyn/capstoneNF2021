@@ -3,22 +3,37 @@
   flex-flow: wrap;
   justify-content: space-evenly;
 }
+.passenger-date-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 20px;
+}
 
 .add-flight-passengers {
   text-indent: 4px;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 5px;
+  height: 30px;
   width: 150px;
+  box-shadow: 2px 2px 4px;
 }
 
 .add-flight-datepicker {
   height: 30px;
   width: 150px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
   text-indent: 4px;
-  box-shadow: 2px 4px 4px;
+  box-shadow: 2px 2px 4px;
+}
+
+.select-box-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
 }
 
 .add-flight-airport-input {
@@ -29,15 +44,6 @@
   border: none;
   text-indent: 4px;
   box-shadow: 2px 4px 4px;
-}
-.add-flight-calculate-button {
-  width: 210px;
-  height: 47px;
-  margin: 10px;
-  background-color: var(--color-green);
-  border-radius: 25px;
-  font-family: "Helvetica Neue", sans-serif;
-  border: none;
 }
 
 .add-flight-addtrip-button {
@@ -52,4 +58,11 @@
 
 .add-flight-emission-paragraph {
   color: var(--color-white);
+}
+
+.select-class {
+  padding: 20px;
+  width: 310px;
+  padding: 0px;
+  box-shadow: 2px 4px 4px;
 }

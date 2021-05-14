@@ -1,8 +1,11 @@
 import "./AddFlightForm.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { addFlightItemToLocalStorage } from "./tripStorage";
 import Button from "./Button";
 import fetchFlightEstimate from "../services/FetchFlightEstimate";
+
+import Select from "react-select";
+import airportData from "../services/airports.json";
 
 export default function AddFlightForm() {
   const [passengers, setPassengers] = useState();
@@ -11,14 +14,38 @@ export default function AddFlightForm() {
   const [destination, setDestination] = useState("");
   const [estimateObject, setEstimateObject] = useState();
   const [showAddButton, setShowAddButton] = useState(false);
+  const [airportOptions, setAirportOptions] = useState([]);
+
+  const airports = airportData;
+
+  useEffect(() => {
+    setAirportOptions(
+      airports.map((item) => {
+        let placeHolder = `${item.iata} (${item.name})`;
+        return { value: placeHolder, label: placeHolder };
+      })
+    );
+  }, []);
 
   function handleSubmit(event) {
     event.preventDefault();
+    const parenthesisIndex = departure.indexOf("(");
+    const airportCodeDeparture = departure.slice(
+      parenthesisIndex + 1,
+      parenthesisIndex + 4
+    );
+    const parenthesisIndexTwo = destination.indexOf("(");
+    const airportCodeDestination = destination.slice(
+      parenthesisIndexTwo + 1,
+      parenthesisIndexTwo + 4
+    );
+    console.log(airportCodeDeparture);
+    console.log(airportCodeDestination);
     const requestItem = {
       passengers,
       date,
-      departure,
-      destination,
+      airportCodeDeparture,
+      airportCodeDestination,
     };
     fetchFlightEstimate({ requestItem }).then((estimate) => {
       setEstimateObject(estimate);
@@ -53,53 +80,52 @@ export default function AddFlightForm() {
     setDate(newDate);
   }
 
-  function handleDestinationChange(event) {
-    setDestination(event.target.value);
-  }
-
   function handleDepartureChange(event) {
-    const { value } = event.target;
+    const { value } = event;
     setDeparture(value);
   }
 
+  function handleDestinationChange(event) {
+    const { value } = event;
+    setDestination(value);
+  }
   return (
     <div>
       <form className="add-flight-form" onSubmit={handleSubmit}>
-        <input
-          type="number"
-          className="add-flight-passengers"
-          placeholder="Number of passengers"
-          value={passengers}
-          onChange={handlePassengerChange}
-          required
-        ></input>
-
-        <input
-          type="date"
-          className="add-flight-datepicker"
-          value={date}
-          pattern="\d{4}-\d{2}-\d{2}"
-          onChange={handleDateChange}
-          required
-        ></input>
-        <input
-          className="add-flight-airport-input"
-          type="text"
-          placeholder="Departure airport"
-          name="departureAirport"
-          value={departure}
-          onChange={handleDepartureChange}
-          required
-        />
-
-        <input
-          className="add-flight-airport-input"
-          type="text"
-          placeholder="Destination airport"
-          value={destination}
-          onChange={handleDestinationChange}
-          required
-        />
+        <div className="passenger-date-container">
+          <input
+            type="number"
+            className="add-flight-passengers"
+            placeholder="No. of passengers"
+            value={passengers}
+            onChange={handlePassengerChange}
+            required
+          ></input>
+          <input
+            type="date"
+            className="add-flight-datepicker"
+            value={date}
+            pattern="\d{4}-\d{2}-\d{2}"
+            onChange={handleDateChange}
+            required
+          ></input>
+        </div>
+        <div className="select-box-container">
+          <Select
+            className="select-class"
+            placeholder="Departure airport"
+            options={airportOptions}
+            onChange={handleDepartureChange}
+            action="select-option"
+          />
+          <Select
+            className="select-class"
+            placeholder="Destination airport"
+            options={airportOptions}
+            onChange={handleDestinationChange}
+            required
+          />
+        </div>
         <div>
           <Button type="primary" text="Calculate CO2 emission"></Button>
         </div>

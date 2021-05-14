@@ -1,4 +1,5 @@
 import "./AddCarTripForm.css";
+import Select from "react-select";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { addCarItemToLocalStorage } from "./tripStorage";
@@ -23,15 +24,27 @@ export default function AddCarTripForm() {
   const history = useHistory();
   const modelSet = new Set();
 
-  console.log(selectVehicleMake);
-  console.log(selectVehicleModel);
-
   useEffect(() => {
     fetchVehicleMakes().then((makes) => {
       setVehicleMakes(makes);
       setSelectVehicleMake(makes[0]);
     });
   }, []);
+
+  function renderVehicleMakes() {
+    return vehicleMakes.map((item) => {
+      return {
+        value: item.data.attributes.name,
+        label: item.data.attributes.name,
+      };
+    });
+  }
+
+  function renderVehicleModels() {
+    return displayVehicleModels.map((item) => {
+      return { value: item, label: item };
+    });
+  }
 
   function renderVehicleMakeOptions() {
     return vehicleMakes.map((item) => {
@@ -82,8 +95,9 @@ export default function AddCarTripForm() {
   }
 
   function handleVehicleMakeChange(event) {
+    const { value } = event;
     const selectedVehicle = vehicleMakes.find((make) => {
-      return make.data.attributes.name === event.target.value;
+      return make.data.attributes.name === value;
     });
 
     setSelectVehicleMake(selectedVehicle.data.attributes.name);
@@ -104,8 +118,7 @@ export default function AddCarTripForm() {
   }
 
   function handleVehicleModelChange(event) {
-    setSelectVehicleModel(event.target.value);
-    const value = event.target.value;
+    const { value } = event;
     const commaIndex = value.indexOf(",");
     const selectedName = value.slice(0, commaIndex);
     const selectedModel = vehicleModels.find((model) => {
@@ -118,39 +131,39 @@ export default function AddCarTripForm() {
   return (
     <div>
       <form className="add-car-trip-form" onSubmit={handleSubmit}>
-        <input
-          className="add-car-trip-distanceinput"
-          type="text"
-          placeholder="Distance in km"
-          value={distance}
-          onChange={handleDistanceChange}
-          required
-        />
-        <input
-          type="date"
-          className="add-flight-datepicker"
-          value={date}
-          pattern="\d{4}-\d{2}-\d{2}"
-          onChange={handleDateChange}
-          required
-        ></input>
-
-        <select
-          value={selectVehicleMake}
-          onChange={handleVehicleMakeChange}
-          className="add-car-trip-select"
-          required
-        >
-          {renderVehicleMakeOptions()}
-        </select>
-        <select
-          value={selectVehicleModel}
-          onChange={handleVehicleModelChange}
-          className="add-car-trip-select"
-          required
-        >
-          {renderVehicleModelOptions()}
-        </select>
+        <div className="distance-date-container">
+          <input
+            className="add-car-trip-distanceinput"
+            type="text"
+            placeholder="Distance in km"
+            value={distance}
+            onChange={handleDistanceChange}
+            required
+          />
+          <input
+            type="date"
+            className="add-car-trip-datepicker"
+            value={date}
+            pattern="\d{4}-\d{2}-\d{2}"
+            onChange={handleDateChange}
+            required
+          ></input>
+        </div>
+        <div className="select-box-container">
+          <Select
+            className="select-class"
+            placeholder="Vehicle Makes"
+            options={renderVehicleMakes()}
+            onChange={handleVehicleMakeChange}
+            required
+          />
+          <Select
+            className="select-class"
+            placeholder="Vehicle Models"
+            options={renderVehicleModels()}
+            onChange={handleVehicleModelChange}
+          />
+        </div>
         <div>
           <Button type="primary" text="Calculate CO2 emission"></Button>
         </div>

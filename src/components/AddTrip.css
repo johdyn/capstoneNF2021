@@ -1,9 +1,9 @@
-.add-trip-container {
+.add-car-header {
+  margin: 0px;
+}
+
+.add-trip {
   background-image: url("../images/Background-image.png");
   background-size: cover;
   height: 100%;
-}
-
-.add-trip-header {
-  margin: 0px;
 }

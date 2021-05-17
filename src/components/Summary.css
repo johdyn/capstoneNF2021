@@ -1,3 +1,7 @@
+.summary-header {
+  padding: 20px;
+}
+
 .summary-content {
   display: flex;
   justify-content: center;

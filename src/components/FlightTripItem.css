@@ -31,7 +31,10 @@
 .trip-item-delete {
   margin-left: 20px;
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 20px;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
 }
 
 .text-container {
@@ -44,6 +47,7 @@
 .trip-item-date {
   align-self: left;
   text-indent: 5px;
+  padding-right: 10px;
 }
 
 .paragraph {

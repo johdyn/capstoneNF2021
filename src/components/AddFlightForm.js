@@ -15,6 +15,7 @@ export default function AddFlightForm() {
   const [estimateObject, setEstimateObject] = useState();
   const [showAddButton, setShowAddButton] = useState(false);
   const [airportOptions, setAirportOptions] = useState([]);
+  console.log(estimateObject);
 
   const airports = airportData;
 
@@ -29,16 +30,9 @@ export default function AddFlightForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const parenthesisIndex = departure.indexOf("(");
-    const airportCodeDeparture = departure.slice(
-      parenthesisIndex + 1,
-      parenthesisIndex + 4
-    );
-    const parenthesisIndexTwo = destination.indexOf("(");
-    const airportCodeDestination = destination.slice(
-      parenthesisIndexTwo + 1,
-      parenthesisIndexTwo + 4
-    );
+
+    const airportCodeDeparture = departure.slice(0, 3);
+    const airportCodeDestination = destination.slice(0, 3);
     console.log(airportCodeDeparture);
     console.log(airportCodeDestination);
     const requestItem = {
@@ -47,7 +41,7 @@ export default function AddFlightForm() {
       airportCodeDeparture,
       airportCodeDestination,
     };
-    fetchFlightEstimate({ requestItem }).then((estimate) => {
+    fetchFlightEstimate(requestItem).then((estimate) => {
       setEstimateObject(estimate);
       setShowAddButton(true);
     });

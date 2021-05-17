@@ -1,6 +1,7 @@
-.home-header {
-  margin: 20px;
-  height: 60px;
+.tripList-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .h1-class {

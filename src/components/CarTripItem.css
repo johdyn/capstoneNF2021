@@ -1,16 +1,15 @@
 .trip-item {
   display: flex;
   flex-direction: row;
+  position: relative;
+  z-index: 1;
   padding: 1em;
   height: 80px;
   width: 300px;
-  border-radius: 10px;
-  /* background-color: rgba(0, 0, 0, 0.5);
-  color: #fff; */
-  background-color: var(--color-white);
-  opacity: 0.9;
-  color: var(--color-blue);
-  box-shadow: 2px -2px 4px var(--color-white);
+  color: whitesmoke;
+  border-radius: 50px;
+  background: linear-gradient(145deg, #055f5b, #06716c);
+  box-shadow: 20px 20px 60px #055a56, -20px -20px 60px #077a74;
   justify-content: space-between;
   text-align: left;
 }
@@ -19,26 +18,28 @@
   align-self: left;
   text-indent: 5px;
   font-size: 14px;
-  margin-right: 2px;
+  padding-right: 10px;
 }
 
 .text-container {
   display: flex;
-  flex-grow: 1;
+  flex-grow: 1.5;
+  min-width: 200px;
   flex-direction: column;
   justify-content: space-between;
-  /* margin-right: 20px;
-  margin-left: 10px; */
   text-align: left;
 }
 .paragraph {
   font-weight: 500;
-  font-size: 1em;
+  font-size: 0.75rem;
 }
 
 .trip-item-delete {
   flex-grow: 1;
   font-size: 20px;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
 }
 
 /* h3 {

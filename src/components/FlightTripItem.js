@@ -1,5 +1,5 @@
-import "./TripItem.css";
-import { FaTrashAlt } from "react-icons/fa";
+import "./FlightTripItem.css";
+import { FaPlane, FaTrashAlt } from "react-icons/fa";
 
 export default function FlightTripItem({
   id,
@@ -12,17 +12,24 @@ export default function FlightTripItem({
   onRemove,
 }) {
   const newDate = new Date(date).toLocaleDateString("de-DE");
-
+  const departureCode = `${departure.slice(0, 3)} `;
+  const destinationCode = ` ${destination.slice(0, 3)}`;
   return (
     <article className="trip-item">
-      <h5 className="trip-item-date">{newDate}:</h5>
+      <h5 className="trip-item-date">{newDate}</h5>
       <div className="text-container">
-        <p>Passengers: {passengers}</p>
-        <p>Departure: {departure}</p>
-        <p className="paragraph">Destination: {destination}</p>
-        <p>CO2 Emission: {carbon} kg </p>
-        <p>Distance: {distance} km </p>
+        <span className="paragraph">
+          {departureCode}
+          <FaPlane />
+          {destinationCode}
+        </span>
+
+        <p className="paragraph"></p>
+        <p className="paragraph">Passengers: {passengers}</p>
+        <p className="paragraph">CO2: {carbon} kg </p>
+        <p className="paragraph">{distance} km </p>
       </div>
+
       <FaTrashAlt className="trip-item-delete" onClick={onRemove} />
     </article>
   );

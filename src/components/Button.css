@@ -2,12 +2,19 @@
   width: 210px;
   height: 47px;
   margin: 10px;
-  background-color: var(--color-green);
+  background-color: #faffe4;
   border-radius: 25px;
   font-family: "Helvetica Neue", sans-serif;
   border: none;
 }
 
 .btn-secondary {
-  background-color: var(--color-purple);
+  background-color: #3ab19c;
+}
+
+.btn-tertiary {
+  border-radius: 50px;
+  background: #3ab19c;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+  /* 20px 20px 60px #035752, -20px -20px 60px #057570; */
 }

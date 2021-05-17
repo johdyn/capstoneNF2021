@@ -1,4 +1,4 @@
-export default function fetchFlightEstimate({ requestItem }) {
+export default function fetchFlightEstimate(requestItem) {
   const url = "https://www.carboninterface.com/api/v1/estimates";
   const tripData = {
     type: "flight",

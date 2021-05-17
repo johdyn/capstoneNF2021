@@ -7,6 +7,10 @@ export default function Button({ type, text, onClick }) {
   if (type === "secondary") {
     className = "btn btn-secondary";
   }
+  if (type === "tertiary") {
+    className = "btn btn-tertiary";
+  }
+
   return (
     <button className={className} onClick={onClick}>
       {text}

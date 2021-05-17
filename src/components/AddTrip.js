@@ -26,11 +26,11 @@ export default function AddTrip() {
     return (
       <div className="add-trip">
         <header className="Header">
-          <h1 className="add-car-header">Add Trip</h1>
+          <h1 className="add-trip-header">Add Trip</h1>
         </header>
         <div className="filter-button-container">
-          <FilterButton text="Add car trip" onClick={handleCarFilter} />
-          <FilterButton text="Add flight" onClick={handleFlightFilter} />
+          <FilterButton text="Add Car Trip" onClick={handleCarFilter} />
+          <FilterButton text="Add Flight" onClick={handleFlightFilter} />
         </div>
       </div>
     );

@@ -1,0 +1,11 @@
+.header {
+  height: 80px;
+  padding: 20px;
+
+  top: 0;
+  z-index: 2;
+}
+
+.h1-class {
+  align-self: center;
+}

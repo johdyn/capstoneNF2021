@@ -13,12 +13,13 @@
   height: 100vh;
   position: relative;
   display: grid;
-
   /* font-family: "Courier New", Courier, monospace; */
   grid-template-columns: [width] 100vw;
   grid-template-rows: [main] auto [footer] 60px;
 }
-
+.Header {
+  grid-row: header;
+}
 .main-content {
   grid-row: main;
   overflow-y: scroll;

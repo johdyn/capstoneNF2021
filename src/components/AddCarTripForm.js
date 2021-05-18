@@ -2,7 +2,7 @@ import "./AddCarTripForm.css";
 import Select from "react-select";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { addCarItemToLocalStorage } from "./tripStorage";
+import { addCarItemToLocalStorage } from "../services/tripStorage";
 import Button from "./Button";
 import {
   fetchVehicleEstimate,
@@ -14,7 +14,7 @@ export default function AddCarTripForm() {
   const [distance, setDistance] = useState("");
   const [date, setDate] = useState(new Date());
   const [vehicleMakes, setVehicleMakes] = useState([]);
-  const [vehicleModels, setVehicleModels] = useState();
+  const [vehicleModels, setVehicleModels] = useState([]);
   const [selectVehicleMake, setSelectVehicleMake] = useState();
   const [selectVehicleModel, setSelectVehicleModel] = useState();
   const [displayVehicleModels, setDisplayVehicleModels] = useState([]);
@@ -24,6 +24,9 @@ export default function AddCarTripForm() {
   const history = useHistory();
   const modelSet = new Set();
 
+  console.log(selectVehicleModel);
+  console.log(selectVehicleModelID);
+  console.log(vehicleModels);
   useEffect(() => {
     fetchVehicleMakes().then((makes) => {
       setVehicleMakes(makes);
@@ -46,29 +49,21 @@ export default function AddCarTripForm() {
     });
   }
 
-  function renderVehicleMakeOptions() {
-    return vehicleMakes.map((item) => {
-      return <option>{item.data.attributes.name}</option>;
-    });
-  }
-
-  function renderVehicleModelOptions() {
-    return displayVehicleModels.map((item) => {
-      return <option>{item}</option>;
-    });
-  }
   function handleSubmit(event) {
     event.preventDefault();
+    if (selectVehicleModelID === undefined) {
+      alert("Please choose a vehicle make and model");
+    } else {
+      const requestItem = {
+        distance: distance,
+        id: selectVehicleModelID,
+      };
 
-    const requestItem = {
-      distance: distance,
-      id: selectVehicleModelID,
-    };
-
-    fetchVehicleEstimate(requestItem).then((estimate) => {
-      setCarbonEstimate(estimate.data.attributes.carbon_kg);
-      setShowAddButton(true);
-    });
+      fetchVehicleEstimate(requestItem).then((estimate) => {
+        setCarbonEstimate(estimate.data.attributes.carbon_kg);
+        setShowAddButton(true);
+      });
+    }
   }
 
   function handleAddTrip() {
@@ -82,7 +77,7 @@ export default function AddCarTripForm() {
     };
     console.log(tripItem);
     addCarItemToLocalStorage(tripItem);
-    // history.push("/");
+    history.push("/");
   }
 
   function handleDistanceChange(event) {
@@ -96,13 +91,13 @@ export default function AddCarTripForm() {
 
   function handleVehicleMakeChange(event) {
     const { value } = event;
-    const selectedVehicle = vehicleMakes.find((make) => {
+    const selectedMake = vehicleMakes.find((make) => {
       return make.data.attributes.name === value;
     });
 
-    setSelectVehicleMake(selectedVehicle.data.attributes.name);
-    const vehicleID = selectedVehicle.data.id;
-    fetchVehicleModels(vehicleID).then((models) => {
+    setSelectVehicleMake(selectedMake.data.attributes.name);
+    const makeID = selectedMake.data.id;
+    fetchVehicleModels(makeID).then((models) => {
       setVehicleModels(models);
       models.map((item) => {
         return modelSet.add(
@@ -112,8 +107,8 @@ export default function AddCarTripForm() {
       const displayArray = Array.from(modelSet);
       displayArray.sort();
       setDisplayVehicleModels(displayArray);
-      setSelectVehicleModel(displayArray[0]);
-      console.log(selectVehicleModel);
+      // setSelectVehicleModel(displayArray[0]);
+      // console.log(selectVehicleModel);
     });
   }
 
@@ -121,10 +116,20 @@ export default function AddCarTripForm() {
     const { value } = event;
     const commaIndex = value.indexOf(",");
     const selectedName = value.slice(0, commaIndex);
+    const selectedYear = value.slice(commaIndex + 2, commaIndex + 6);
+    console.log(selectedName);
+    console.log(selectedYear);
+    console.log(selectedYear.length);
     const selectedModel = vehicleModels.find((model) => {
-      return model.data.attributes.name === selectedName;
+      return (
+        model.data.attributes.name === selectedName &&
+        model.data.attributes.year == selectedYear
+      );
     });
-
+    console.log(selectedModel);
+    setSelectVehicleModel(
+      `${selectedModel.data.attributes.name}, ${selectedModel.data.attributes.year}`
+    );
     setSelectVehicleModelID(selectedModel.data.id);
   }
 

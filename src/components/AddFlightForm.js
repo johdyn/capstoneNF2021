@@ -1,6 +1,6 @@
 import "./AddFlightForm.css";
 import { useState, useEffect } from "react";
-import { addFlightItemToLocalStorage } from "./tripStorage";
+import { addFlightItemToLocalStorage } from "../services/tripStorage";
 import Button from "./Button";
 import fetchFlightEstimate from "../services/FetchFlightEstimate";
 
@@ -15,36 +15,43 @@ export default function AddFlightForm() {
   const [estimateObject, setEstimateObject] = useState();
   const [showAddButton, setShowAddButton] = useState(false);
   const [airportOptions, setAirportOptions] = useState([]);
-  console.log(estimateObject);
 
   const airports = airportData;
 
   useEffect(() => {
     setAirportOptions(
-      airports.map((item) => {
-        let placeHolder = `${item.iata} (${item.name})`;
-        return { value: placeHolder, label: placeHolder };
-      })
+      airports
+        .filter((item) => {
+          return item.name !== null;
+        })
+        .map((item) => {
+          let placeHolder = `${item.iata} (${item.name})`;
+          return { value: placeHolder, label: placeHolder };
+        })
     );
   }, []);
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    const airportCodeDeparture = departure.slice(0, 3);
-    const airportCodeDestination = destination.slice(0, 3);
-    console.log(airportCodeDeparture);
-    console.log(airportCodeDestination);
-    const requestItem = {
-      passengers,
-      date,
-      airportCodeDeparture,
-      airportCodeDestination,
-    };
-    fetchFlightEstimate(requestItem).then((estimate) => {
-      setEstimateObject(estimate);
-      setShowAddButton(true);
-    });
+    if (departure === "" || destination === "") {
+      alert("Please choose departure and destination airports");
+    } else {
+      const airportCodeDeparture = departure.slice(0, 3);
+      const airportCodeDestination = destination.slice(0, 3);
+      console.log(airportCodeDeparture);
+      console.log(airportCodeDestination);
+      const requestItem = {
+        passengers,
+        date,
+        airportCodeDeparture,
+        airportCodeDestination,
+      };
+      fetchFlightEstimate(requestItem).then((estimate) => {
+        setEstimateObject(estimate);
+        setShowAddButton(true);
+      });
+    }
   }
   function handleAddTrip() {
     const carbon = Math.round(estimateObject.data.attributes.carbon_kg);
@@ -105,13 +112,16 @@ export default function AddFlightForm() {
           ></input>
         </div>
         <div className="select-box-container">
-          <Select
-            className="select-class"
-            placeholder="Departure airport"
-            options={airportOptions}
-            onChange={handleDepartureChange}
-            action="select-option"
-          />
+          <div className="select-wrapper-container">
+            <Select
+              className="select-class"
+              placeholder="Departure airport"
+              options={airportOptions}
+              onChange={handleDepartureChange}
+              required
+              action="select-option"
+            />
+          </div>
           <Select
             className="select-class"
             placeholder="Destination airport"

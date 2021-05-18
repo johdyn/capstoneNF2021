@@ -2,9 +2,22 @@
   width: 110px;
   height: 47px;
   margin: 10px;
-
   background-color: #3ab19c;
   border-radius: 25px;
   font-family: "Helvetica Neue", sans-serif;
   border: none;
+  transition: background-color 0.5s;
+  transition: color 0.2s;
 }
+.filter-button:hover {
+  background-color: #077a74;
+  color: whitesmoke;
+}
+
+.filter-button:active {
+  border: whitesmoke solid 1px;
+  color: whitesmoke;
+}
+/* .filter-button:focus {
+  background-color: blue;
+} */

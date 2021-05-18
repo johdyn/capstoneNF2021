@@ -4,13 +4,12 @@ import "./AddTrip.css";
 import FilterButton from "./FilterButton";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import Header from "./Header";
 
 export default function AddTrip() {
   const [filter, setFilter] = useState("");
   const [showForm, setShowForm] = useState(false);
 
-  console.log(filter);
-  console.log(showForm);
   // let history = useHistory();
 
   function handleCarFilter() {
@@ -25,9 +24,7 @@ export default function AddTrip() {
   if (!showForm) {
     return (
       <div className="add-trip">
-        <header className="Header">
-          <h1 className="add-trip-header">Add Trip</h1>
-        </header>
+        <Header text="Add Trip" headerClass="header" h1Class="h1-class" />
         <div className="filter-button-container">
           <FilterButton text="Add Car Trip" onClick={handleCarFilter} />
           <FilterButton text="Add Flight" onClick={handleFlightFilter} />
@@ -37,31 +34,23 @@ export default function AddTrip() {
   } else if (showForm === true && filter === "car") {
     return (
       <div className="add-trip">
-        <header className="Header">
-          <h1 className="add-car-header">Add Car Ride</h1>
-        </header>
+        <Header text="Add Car Ride" headerClass="header" h1Class="h1-class" />
         <div className="filter-button-container">
-          <FilterButton text="Add car trip" onClick={handleCarFilter} />
-          <FilterButton text="Add flight" onClick={handleFlightFilter} />
+          <FilterButton text="Add Car Trip" onClick={handleCarFilter} />
+          <FilterButton text="Add Flight" onClick={handleFlightFilter} />
         </div>
-        <div>
-          <AddCarTripForm />
-        </div>
+        <AddCarTripForm />
       </div>
     );
   } else if (showForm === true && filter === "flight") {
     return (
       <div className="add-trip">
-        <header className="Header">
-          <h1 className="add-car-header">Add Flight</h1>
-        </header>
+        <Header text="Add Flight" headerClass="header" h1Class="h1-class" />
         <div className="filter-button-container">
-          <FilterButton text="Add car trip" onClick={handleCarFilter} />
-          <FilterButton text="Add flight" onClick={handleFlightFilter} />
+          <FilterButton text="Add Car Trip" onClick={handleCarFilter} />
+          <FilterButton text="Add Flight" onClick={handleFlightFilter} />
         </div>
-        <div>
-          <AddFlightForm />
-        </div>
+        <AddFlightForm />
       </div>
     );
   }

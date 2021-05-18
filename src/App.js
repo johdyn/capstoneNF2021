@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
-import Home from "./components/Home";
+import MyTrips from "./components/MyTrips";
 import Summary from "./components/Summary";
 import AddTrip from "./components/AddTrip";
 
@@ -11,8 +11,8 @@ function App() {
       <div className="App">
         <main class="main-content">
           <Switch>
-            <Route exact path="/">
-              <Home />
+            <Route exact path to="/">
+              <MyTrips />
             </Route>
             <Route exact path="/summary">
               <Summary />

@@ -7,7 +7,7 @@ import {
   getFlightItemsFromLocalStorage,
   removeFlightItemFromLocalStorage,
   removeCarItemFromLocalStorage,
-} from "./tripStorage";
+} from "../services/tripStorage";
 
 import { useState } from "react";
 import FilterButton from "./FilterButton";

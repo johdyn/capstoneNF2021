@@ -1,12 +1,10 @@
 import "./Home.css";
-import Triplist from "./Triplist";
-import Header from "./Header";
+// import Header from "./Header";
 
 export default function Home() {
   return (
-    <div className="tripList-container">
-      <Header text="My Trips" headerClass="header" h1Class="h1-class" />
-      <Triplist />
+    <div className="home-container">
+      <h1>Carbon Tracker</h1>
     </div>
   );
 }

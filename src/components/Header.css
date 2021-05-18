@@ -1,11 +1,19 @@
 .header {
   height: 80px;
   padding: 20px;
-
+  position: fixed;
   top: 0;
+  display: flex;
   z-index: 2;
+  justify-content: center;
+  width: 100%;
+  background: rgb(6, 104, 101);
+  background: linear-gradient(
+    90deg,
+    rgba(6, 104, 101, 1) 0%,
+    rgba(16, 124, 104, 1) 100%
+  );
 }
 
 .h1-class {
-  align-self: center;
 }

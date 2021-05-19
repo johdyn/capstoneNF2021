@@ -19,6 +19,7 @@ export default function SummaryCard() {
       <div>
         <DoughnutChart flightSum={flightSum} carSum={carSum} />
       </div>
+      <p>Sustainable Annual Budget: 1.500 kg</p>
     </div>
   );
 }

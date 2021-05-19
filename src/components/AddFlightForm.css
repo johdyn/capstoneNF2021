@@ -1,7 +1,14 @@
+.add-flight {
+  display: flex;
+  flex-flow: column wrap;
+}
 .add-flight-form {
   display: flex;
-  flex-flow: wrap;
+  flex-direction: column;
   justify-content: space-evenly;
+  position: absolute;
+  top: 80px;
+  align-items: center;
 }
 
 .passenger-date-container {
@@ -47,6 +54,14 @@
   box-shadow: 2px 4px 4px;
 }
 
+.estimate-add-button-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  top: 270px;
+}
+
 .add-flight-addtrip-button {
   width: 210px;
   height: 47px;
@@ -63,7 +78,7 @@
 
 .select-class {
   padding: 20px;
-  width: 310px;
+  width: 250px;
   padding: 0px;
   box-shadow: 2px 4px 4px;
 }

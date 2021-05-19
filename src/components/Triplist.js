@@ -28,49 +28,58 @@ export default function Triplist() {
     removeCarItemFromLocalStorage(itemID);
     setCarTripItems(getCarItemsFromLocalStorage());
   }
-
+  function renderFlightTripItems() {
+    if (flightTripItems.length === 0) {
+      return "empty";
+    }
+    return flightTripItems
+      .sort((a, b) => {
+        return new Date(b.date) - new Date(a.date);
+      })
+      .map((item) => {
+        return (
+          <FlightTripItem
+            id={item.id}
+            date={item.date}
+            passengers={item.passengers}
+            departure={item.departure}
+            destination={item.destination}
+            distance={item.distance}
+            carbon={item.carbon}
+            onRemove={() => handleRemoveFlightItem(item.id)}
+          />
+        );
+      });
+  }
+  function rendercarTripItems() {
+    if (carTripItems.length === 0) {
+      return "empty";
+    }
+    return carTripItems
+      .sort((a, b) => {
+        return new Date(b.date) - new Date(a.date);
+      })
+      .map((item) => {
+        return (
+          <CarTripItem
+            id={item.id}
+            date={item.date}
+            distance={item.distance}
+            vehicleMake={item.selectVehicleMake}
+            vehicleModel={item.selectVehicleModel}
+            estimate={item.carbon}
+            onRemove={() => handleRemoveCarItem(item.id)}
+          />
+        );
+      });
+  }
   return (
     <div className="trip-container">
       <div className="button-container">
         <FilterButton text="Car Trips" onClick={() => setFilter("cars")} />
         <FilterButton text="Flights" onClick={() => setFilter("flights")} />
       </div>
-      {filter === "flights"
-        ? flightTripItems
-            .sort((a, b) => {
-              return new Date(b.date) - new Date(a.date);
-            })
-            .map((item) => {
-              return (
-                <FlightTripItem
-                  id={item.id}
-                  date={item.date}
-                  passengers={item.passengers}
-                  departure={item.departure}
-                  destination={item.destination}
-                  distance={item.distance}
-                  carbon={item.carbon}
-                  onRemove={() => handleRemoveFlightItem(item.id)}
-                />
-              );
-            })
-        : carTripItems
-            .sort((a, b) => {
-              return new Date(b.date) - new Date(a.date);
-            })
-            .map((item) => {
-              return (
-                <CarTripItem
-                  id={item.id}
-                  date={item.date}
-                  distance={item.distance}
-                  vehicleMake={item.selectVehicleMake}
-                  vehicleModel={item.selectVehicleModel}
-                  estimate={item.carbon}
-                  onRemove={() => handleRemoveCarItem(item.id)}
-                />
-              );
-            })}
+      {filter === "flights" ? renderFlightTripItems() : rendercarTripItems()}
     </div>
   );
 }

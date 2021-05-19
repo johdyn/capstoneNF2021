@@ -1,17 +1,7 @@
-.add-car {
+.add-car-trip-form {
   display: flex;
-  flex-flow: column wrap;
-  height: 100%;
-  width: 100vw;
-  justify-content: space-around;
-}
-.add-car-form {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 80px;
+  flex-flow: wrap;
   justify-content: space-evenly;
-  align-items: center;
 }
 
 .distance-date-container {
@@ -39,24 +29,16 @@
   box-shadow: 2px 2px 4px;
 }
 
-.add-car-trip-select {
-  margin: 20px;
-  width: 200px;
-  height: 30px;
-}
-
-.select-box-container {
+.radio-button-container {
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  gap: 20px;
 }
 
 .select-class {
   padding: 20px;
-  width: 300px;
+  width: 310px;
   padding: 0px;
-  box-shadow: 2px 4px 1px;
+  box-shadow: 2px 4px 4px;
 }
 
 .add-car-calculate-button {
@@ -67,14 +49,6 @@
   border-radius: 25px;
   font-family: "Helvetica Neue", sans-serif;
   border: none;
-}
-
-.estimate-add-button-container {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: center;
-  top: 270px;
 }
 
 .add-car-addtrip-button {
@@ -89,8 +63,4 @@
 
 .add-car-emission-paragraph {
   color: var(--color-white);
-}
-
-.back-button-wrapper {
-  margin: 20px;
 }

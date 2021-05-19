@@ -1,7 +1,9 @@
 import "./AddFlightForm.css";
 import { useState, useEffect } from "react";
 import { addFlightItemToLocalStorage } from "../services/tripStorage";
+import { useHistory } from "react-router-dom";
 import Button from "./Button";
+import Header from "./Header";
 import fetchFlightEstimate from "../services/FetchFlightEstimate";
 
 import Select from "react-select";
@@ -15,7 +17,7 @@ export default function AddFlightForm() {
   const [estimateObject, setEstimateObject] = useState();
   const [showAddButton, setShowAddButton] = useState(false);
   const [airportOptions, setAirportOptions] = useState([]);
-
+  const history = useHistory();
   const airports = airportData;
 
   useEffect(() => {
@@ -66,6 +68,7 @@ export default function AddFlightForm() {
     };
 
     addFlightItemToLocalStorage(tripItem);
+    history.push("/");
   }
 
   function handlePassengerChange(event) {
@@ -90,8 +93,14 @@ export default function AddFlightForm() {
     const { value } = event;
     setDestination(value);
   }
+
+  function handleBackClick() {
+    history.push("/add-trip");
+  }
+
   return (
-    <div>
+    <div className="add-flight">
+      <Header text="Add Flight" headerClass="header" h1Class="h1-class" />
       <form className="add-flight-form" onSubmit={handleSubmit}>
         <div className="passenger-date-container">
           <input
@@ -118,8 +127,6 @@ export default function AddFlightForm() {
               placeholder="Departure airport"
               options={airportOptions}
               onChange={handleDepartureChange}
-              required
-              action="select-option"
             />
           </div>
           <Select
@@ -127,7 +134,6 @@ export default function AddFlightForm() {
             placeholder="Destination airport"
             options={airportOptions}
             onChange={handleDestinationChange}
-            required
           />
         </div>
         <div>
@@ -148,6 +154,9 @@ export default function AddFlightForm() {
             onClick={handleAddTrip}
           ></Button>
         ) : null}
+      </div>
+      <div>
+        <Button type="back" text="Back" onClick={handleBackClick} />
       </div>
     </div>
   );

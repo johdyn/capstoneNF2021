@@ -6,7 +6,7 @@ import {
 export function calculateFlightSum() {
   let sum = 0;
 
-  const flights = JSON.parse(localStorage.getItem("flightItems") || []);
+  const flights = JSON.parse(localStorage.getItem("flightItems")) || [];
   console.log(flights);
   if (flights.length > 0) {
     flights.map((item) => {
@@ -22,7 +22,7 @@ export function calculateFlightSum() {
 
 export function calculateCarSum() {
   let sum = 0;
-  const cars = JSON.parse(localStorage.getItem("carItems") || []);
+  const cars = JSON.parse(localStorage.getItem("carItems")) || [];
   cars.map((item) => {
     sum = sum + item.carbon;
     return sum;

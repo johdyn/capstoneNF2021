@@ -10,6 +10,9 @@ export default function Button({ type, text, onClick }) {
   if (type === "tertiary") {
     className = "btn btn-tertiary";
   }
+  if (type === "back") {
+    className = "btn-back";
+  }
 
   return (
     <button className={className} onClick={onClick}>

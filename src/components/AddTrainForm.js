@@ -1,5 +1,4 @@
-import "./AddCarTripForm.css";
-import Select from "react-select";
+import "./AddTrainForm.css";
 import Header from "./Header";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
@@ -140,9 +139,18 @@ export default function AddCarTripForm() {
   }
 
   return (
-    <div className="add-car">
-      <Header text="Add Car Ride" headerClass="header" h1Class="h1-class" />
-      <form id="car-trip-form" className="add-car-form" onSubmit={handleSubmit}>
+    <div>
+      <div>
+        <Header text="Add Train Ride" headerClass="header" h1Class="h1-class" />
+      </div>
+      <div>
+        <Button type="back" text="Back" onClick={handleBackClick} />
+      </div>
+      <form
+        id="car-trip-form"
+        className="add-car-trip-form"
+        onSubmit={handleSubmit}
+      >
         <div className="distance-date-container">
           <input
             className="add-car-trip-distanceinput"
@@ -161,20 +169,9 @@ export default function AddCarTripForm() {
             required
           ></input>
         </div>
-        <div className="select-box-container">
-          <Select
-            className="select-class"
-            placeholder="Vehicle Makes"
-            options={renderVehicleMakes()}
-            onChange={handleVehicleMakeChange}
-            required
-          />
-          <Select
-            className="select-class"
-            placeholder="Vehicle Models"
-            options={renderVehicleModels()}
-            onChange={handleVehicleModelChange}
-          />
+        <div className="radio-button-container">
+          <input type="radio" value="Electric" name="Electric" />
+          <input type="radio" value="Diesel" name="Diesel" />
         </div>
         <div>
           <Button type="primary" text="Calculate CO2 emission"></Button>
@@ -183,7 +180,7 @@ export default function AddCarTripForm() {
       <div className="estimate-add-button-container">
         {carbonEstimate !== undefined ? (
           <p className="add-car-emission-paragraph">
-            Emission in kg: {carbonEstimate}
+            Emission in kg:{carbonEstimate}
           </p>
         ) : null}
         {showAddButton ? (
@@ -193,9 +190,6 @@ export default function AddCarTripForm() {
             onClick={handleAddTrip}
           ></Button>
         ) : null}
-      </div>
-      <div className="back-button-wrapper">
-        <Button type="back" text="Back" onClick={handleBackClick} />
       </div>
     </div>
   );

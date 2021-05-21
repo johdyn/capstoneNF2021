@@ -7,6 +7,7 @@ import AddTrip from "./components/AddTrip";
 import AddCarTripForm from "./components/AddCarTripForm";
 import AddFlightForm from "./components/AddFlightForm";
 import AddTrainForm from "./components/AddTrainForm";
+import AddBusForm from "./components/AddBusForm";
 
 function App() {
   return (
@@ -32,11 +33,12 @@ function App() {
             <Route exact path="/add-trip/add-train">
               <AddTrainForm />
             </Route>
+            <Route exact path="/add-trip/add-bus">
+              <AddBusForm />
+            </Route>
           </Switch>
         </main>
-        <footer className="Footer">
-          <Navigation />
-        </footer>
+        <Navigation />
       </div>
     </Router>
   );

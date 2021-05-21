@@ -33,7 +33,6 @@ export function fetchVehicleMakes() {
 }
 
 export function fetchVehicleModels(vehicle_make_id) {
-  console.log(vehicle_make_id);
   const url = `https://www.carboninterface.com/api/v1/vehicle_makes/${vehicle_make_id}/vehicle_models`;
 
   return fetch(url, {

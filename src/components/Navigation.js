@@ -3,12 +3,10 @@ import { FaHome } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { FaChartPie } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-
 import { useState } from "react";
 
 export default function Navigation() {
   const [toggledIcon, setToggledIcon] = useState("home");
-  console.log(toggledIcon);
 
   return (
     <nav className="navigation-bar">

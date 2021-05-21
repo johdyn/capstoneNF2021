@@ -4,7 +4,8 @@
   position: relative;
   z-index: 1;
   padding: 1em;
-  height: 80px;
+  min-height: 80px;
+  max-height: auto;
   width: 300px;
   color: whitesmoke;
   border-radius: 50px;
@@ -24,7 +25,7 @@
 .text-container {
   display: flex;
   flex-grow: 1.5;
-  min-width: 200px;
+  max-width: 160px;
   flex-direction: column;
   justify-content: space-between;
   text-align: left;

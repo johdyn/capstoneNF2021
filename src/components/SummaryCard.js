@@ -1,15 +1,17 @@
 import "./SummaryCard.css";
 import DoughnutChart from "./DoughnutChart";
-import { calculateFlightSum, calculateCarSum } from "./calculateCo2Summary";
+import { calculateTransportSum } from "../services/calculateCo2Summary";
 
 export default function SummaryCard() {
-  const flightSum = calculateFlightSum();
-  console.log(flightSum);
-  const carSum = calculateCarSum();
-  console.log(carSum);
-  const totalSum = flightSum + carSum;
+  const flightSum = calculateTransportSum("flightItems");
+  const carSum = calculateTransportSum("carItems");
+  const trainSum = calculateTransportSum("trainItems");
+  const busSum = calculateTransportSum("busItems");
+  const totalSum = flightSum + carSum + trainSum + busSum;
+
   return (
     <div className="summary-card">
+      <input type="date" />
       <select className="period-select-box">
         <option>Choose a month or year</option>
         {/* <option>This month</option>
@@ -17,7 +19,12 @@ export default function SummaryCard() {
       </select>
       <h3>Your Total CO2: {totalSum} kg</h3>
       <div>
-        <DoughnutChart flightSum={flightSum} carSum={carSum} />
+        <DoughnutChart
+          flightSum={flightSum}
+          carSum={carSum}
+          trainSum={trainSum}
+          busSum={busSum}
+        />
       </div>
       <p>Sustainable Annual Budget: 1.500 kg</p>
     </div>

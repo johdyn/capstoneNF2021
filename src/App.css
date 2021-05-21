@@ -23,9 +23,7 @@
     rgba(16, 124, 104, 1) 100%
   );
 }
-.Header {
-  grid-row: header;
-}
+
 .main-content {
   grid-row: main;
   overflow-y: scroll;
@@ -37,36 +35,7 @@
     rgba(16, 124, 104, 1) 100%
   );
 
-  /* background: rgb(6, 104, 101);
-  background: linear-gradient(
-    90deg,
-    rgba(6, 104, 101, 1) 0%,
-    rgba(16, 124, 104, 1) 85%,
-    rgba(25, 146, 106, 1) 100%
-  ); */
-
-  /* background: #4d7c71; */
-  /* background: rgb(14, 120, 102);
-  background: linear-gradient(
-    90deg,
-    rgba(14, 120, 102, 1) 0%,
-    rgba(19, 130, 104, 1) 35%,
-    rgba(18, 128, 103, 1) 100%
-  ); */
   align-items: center;
-}
-
-.Footer {
-  grid-row: footer;
-  box-shadow: inset 0px 10px 10px rgba(0, 0, 0, 0.2);
-  /* background: rgb(6, 104, 101); */
-  background: linear-gradient(
-    90deg,
-    rgba(6, 104, 101, 0.2) 0%,
-    rgba(16, 124, 104, 0.2) 50%
-  );
-  /* background: #faffe4; */
-  /* background: #4d7c71; */
 }
 
 h1 {

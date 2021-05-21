@@ -78,7 +78,7 @@ export default function AddCarTripForm() {
         </div>
         <div className="passenger-radio-button-container">
           <input
-            className="add-car-trip-distanceinput"
+            className="add-trip-distanceinput"
             type="number"
             placeholder="No. of Passengers"
             value={passengers}

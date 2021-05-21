@@ -25,9 +25,6 @@ export default function AddCarTripForm() {
   const history = useHistory();
   const modelSet = new Set();
 
-  console.log(selectVehicleModel);
-  console.log(selectVehicleModelID);
-  console.log(vehicleModels);
   useEffect(() => {
     fetchVehicleMakes().then((makes) => {
       setVehicleMakes(makes);
@@ -76,10 +73,7 @@ export default function AddCarTripForm() {
       selectVehicleModel,
       carbon,
     };
-    console.log(tripItem);
     addCarItemToLocalStorage(tripItem);
-    document.getElementById("car-trip-form").reset();
-    // history.push("/");
   }
 
   function handleDistanceChange(event) {
@@ -109,8 +103,6 @@ export default function AddCarTripForm() {
       const displayArray = Array.from(modelSet);
       displayArray.sort();
       setDisplayVehicleModels(displayArray);
-      // setSelectVehicleModel(displayArray[0]);
-      // console.log(selectVehicleModel);
     });
   }
 
@@ -119,16 +111,12 @@ export default function AddCarTripForm() {
     const commaIndex = value.indexOf(",");
     const selectedName = value.slice(0, commaIndex);
     const selectedYear = value.slice(commaIndex + 2, commaIndex + 6);
-    console.log(selectedName);
-    console.log(selectedYear);
-    console.log(selectedYear.length);
     const selectedModel = vehicleModels.find((model) => {
       return (
         model.data.attributes.name === selectedName &&
-        model.data.attributes.year == selectedYear
+        model.data.attributes.year === selectedYear
       );
     });
-    console.log(selectedModel);
     setSelectVehicleModel(
       `${selectedModel.data.attributes.name}, ${selectedModel.data.attributes.year}`
     );
@@ -142,11 +130,11 @@ export default function AddCarTripForm() {
   return (
     <div className="add-car">
       <Header text="Add Car Ride" headerClass="header" h1Class="h1-class" />
-      <form id="car-trip-form" className="add-car-form" onSubmit={handleSubmit}>
+      <form className="add-car-form" onSubmit={handleSubmit}>
         <div className="distance-date-container">
           <input
             className="add-car-trip-distanceinput"
-            type="text"
+            type="number"
             placeholder="Distance in km"
             value={distance}
             onChange={handleDistanceChange}

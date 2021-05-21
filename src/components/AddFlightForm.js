@@ -31,7 +31,7 @@ export default function AddFlightForm() {
           return { value: placeHolder, label: placeHolder };
         })
     );
-  }, []);
+  }, [airports]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -41,8 +41,7 @@ export default function AddFlightForm() {
     } else {
       const airportCodeDeparture = departure.slice(0, 3);
       const airportCodeDestination = destination.slice(0, 3);
-      console.log(airportCodeDeparture);
-      console.log(airportCodeDestination);
+
       const requestItem = {
         passengers,
         date,
@@ -121,14 +120,13 @@ export default function AddFlightForm() {
           ></input>
         </div>
         <div className="select-box-container">
-          <div className="select-wrapper-container">
-            <Select
-              className="select-class"
-              placeholder="Departure airport"
-              options={airportOptions}
-              onChange={handleDepartureChange}
-            />
-          </div>
+          <Select
+            className="select-class"
+            placeholder="Departure airport"
+            options={airportOptions}
+            onChange={handleDepartureChange}
+          />
+
           <Select
             className="select-class"
             placeholder="Destination airport"

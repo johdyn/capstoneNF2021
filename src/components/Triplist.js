@@ -1,23 +1,32 @@
 import FlightTripItem from "./FlightTripItem";
 import CarTripItem from "./CarTripItem";
-
+import TrainTripItem from "./TrainTripItem";
+import BusTripItem from "./BusTripItem";
 import "./Triplist.css";
 import {
   getCarItemsFromLocalStorage,
   getFlightItemsFromLocalStorage,
+  getTrainItemsFromLocalStorage,
+  getBusItemsFromLocalStorage,
   removeFlightItemFromLocalStorage,
   removeCarItemFromLocalStorage,
+  removeTrainItemFromLocalStorage,
+  removeBusItemFromLocalStorage,
 } from "../services/tripStorage";
-
 import { useState } from "react";
-import FilterButton from "./FilterButton";
+import IconButton from "./IconButton";
 
 export default function Triplist() {
   const [carTripItems, setCarTripItems] = useState(getCarItemsFromLocalStorage);
   const [flightTripItems, setFlightTripItems] = useState(
     getFlightItemsFromLocalStorage
   );
-  const [filter, setFilter] = useState("flights");
+  const [trainTripItems, setTrainTripItems] = useState(
+    getTrainItemsFromLocalStorage
+  );
+  const [busTripItems, setBusTripItems] = useState(getBusItemsFromLocalStorage);
+
+  const [filter, setFilter] = useState("flight");
 
   function handleRemoveFlightItem(itemID) {
     removeFlightItemFromLocalStorage(itemID);
@@ -28,6 +37,17 @@ export default function Triplist() {
     removeCarItemFromLocalStorage(itemID);
     setCarTripItems(getCarItemsFromLocalStorage());
   }
+
+  function handleRemoveTrainItem(itemID) {
+    removeTrainItemFromLocalStorage(itemID);
+    setTrainTripItems(getTrainItemsFromLocalStorage());
+  }
+
+  function handleRemoveBusItem(itemID) {
+    removeBusItemFromLocalStorage(itemID);
+    setBusTripItems(getBusItemsFromLocalStorage());
+  }
+
   function renderFlightTripItems() {
     if (flightTripItems.length === 0) {
       return "empty";
@@ -73,13 +93,68 @@ export default function Triplist() {
         );
       });
   }
+
+  function renderTrainTripItems() {
+    if (trainTripItems.length === 0) {
+      return "empty";
+    }
+    return trainTripItems
+      .sort((a, b) => {
+        return new Date(b.date) - new Date(a.date);
+      })
+      .map((item) => {
+        return (
+          <TrainTripItem
+            id={item.id}
+            date={item.date}
+            passengers={item.passengers}
+            radioButton={item.radioButton}
+            distance={item.distance}
+            carbon={item.carbon}
+            onRemove={() => handleRemoveTrainItem(item.id)}
+          />
+        );
+      });
+  }
+
+  function renderBusTripItems() {
+    if (busTripItems.length === 0) {
+      return <h2>"empty"</h2>;
+    }
+    return busTripItems
+      .sort((a, b) => {
+        return new Date(b.date) - new Date(a.date);
+      })
+      .map((item) => {
+        return (
+          <BusTripItem
+            id={item.id}
+            date={item.date}
+            passengers={item.passengers}
+            radioButton={item.radioButton}
+            distance={item.distance}
+            carbon={item.carbon}
+            onRemove={() => handleRemoveBusItem(item.id)}
+          />
+        );
+      });
+  }
+
   return (
     <div className="trip-container">
       <div className="button-container">
-        <FilterButton text="Car Trips" onClick={() => setFilter("cars")} />
-        <FilterButton text="Flights" onClick={() => setFilter("flights")} />
+        <IconButton type="plane" onClick={() => setFilter("flight")} />
+        <IconButton type="car" onClick={() => setFilter("car")} />
+        <IconButton type="train" onClick={() => setFilter("train")} />
+        <IconButton type="bus" onClick={() => setFilter("bus")} />
       </div>
-      {filter === "flights" ? renderFlightTripItems() : rendercarTripItems()}
+      {filter === "flight"
+        ? renderFlightTripItems()
+        : filter === "car"
+        ? rendercarTripItems()
+        : filter === "train"
+        ? renderTrainTripItems()
+        : renderBusTripItems()}
     </div>
   );
 }

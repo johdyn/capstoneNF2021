@@ -15,7 +15,13 @@
   display: grid;
   /* font-family: "Courier New", Courier, monospace; */
   grid-template-columns: [width] 100vw;
-  grid-template-rows: [main] auto [footer] 60px;
+  grid-template-rows: [main] auto;
+  background: rgb(6, 104, 101);
+  background: linear-gradient(
+    90deg,
+    rgba(6, 104, 101, 1) 0%,
+    rgba(16, 124, 104, 1) 100%
+  );
 }
 .Header {
   grid-row: header;
@@ -23,7 +29,7 @@
 .main-content {
   grid-row: main;
   overflow-y: scroll;
-
+  box-shadow: inset 0px 10px 10px rgba(0, 0, 0, 0.9);
   background: rgb(6, 104, 101);
   background: linear-gradient(
     90deg,
@@ -52,11 +58,12 @@
 
 .Footer {
   grid-row: footer;
-  background: rgb(6, 104, 101);
+  box-shadow: inset 0px 10px 10px rgba(0, 0, 0, 0.2);
+  /* background: rgb(6, 104, 101); */
   background: linear-gradient(
     90deg,
-    rgba(6, 104, 101, 1) 0%,
-    rgba(16, 124, 104, 1) 100%
+    rgba(6, 104, 101, 0.2) 0%,
+    rgba(16, 124, 104, 0.2) 50%
   );
   /* background: #faffe4; */
   /* background: #4d7c71; */

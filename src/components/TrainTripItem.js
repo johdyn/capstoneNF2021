@@ -1,27 +1,30 @@
 import "./FlightTripItem.css";
-import { FaPlane, FaTrashAlt } from "react-icons/fa";
+import { FaTrain, FaTrashAlt } from "react-icons/fa";
 
-export default function FlightTripItem({
+export default function TrainTripItem({
   id,
   date,
   passengers,
-  departure,
-  destination,
   carbon,
   distance,
+  radioButton,
   onRemove,
 }) {
+  let trainType = "";
   const newDate = new Date(date).toLocaleDateString("de-DE");
-  const departureCode = `${departure.slice(0, 3)} `;
-  const destinationCode = ` ${destination.slice(0, 3)}`;
+
+  if (radioButton === 1) {
+    trainType = "Intercity Train";
+  } else {
+    trainType = "Local Train";
+  }
+
   return (
     <article className="trip-item">
       <h5 className="trip-item-date">{newDate}</h5>
       <div className="text-container">
         <span className="paragraph">
-          {departureCode}
-          <FaPlane />
-          {destinationCode}
+          <FaTrain /> {trainType}
         </span>
         <p className="paragraph">Passengers: {passengers}</p>
         <p className="paragraph">CO2: {carbon} kg </p>

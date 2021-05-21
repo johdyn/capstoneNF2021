@@ -1,10 +1,10 @@
-import "./AddTrainForm.css";
+import "./AddBusForm.css";
 import Header from "./Header";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { addTrainItemToLocalStorage } from "../services/tripStorage";
+import { addBusItemToLocalStorage } from "../services/tripStorage";
 import Button from "./Button";
-import { calculateTrainEstimate } from "../services/calculateTrainEstimate";
+import { calculateBusEstimate } from "../services/calculateBusEstimate";
 
 export default function AddCarTripForm() {
   const [distance, setDistance] = useState("");
@@ -18,23 +18,20 @@ export default function AddCarTripForm() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    setCarbonEstimate(
-      calculateTrainEstimate(distance, passengers, radioButton)
-    );
+    setCarbonEstimate(calculateBusEstimate(distance, passengers, radioButton));
     setShowAddButton(true);
   }
 
   function handleAddTrip() {
     const carbon = Math.round(carbonEstimate);
     const tripItem = {
-      distance,
       date,
+      distance,
       passengers,
       radioButton,
       carbon,
     };
-
-    addTrainItemToLocalStorage(tripItem);
+    addBusItemToLocalStorage(tripItem);
   }
 
   function handleDistanceChange(event) {
@@ -45,7 +42,6 @@ export default function AddCarTripForm() {
     const newDate = date.target.value;
     setDate(newDate);
   }
-
   function handlePassengerChange(event) {
     const { value } = event.target;
     if (value > 0) {
@@ -58,10 +54,10 @@ export default function AddCarTripForm() {
   }
 
   return (
-    <div className="add-train">
-      <Header text="Add Train Ride" headerClass="header" h1Class="h1-class" />
+    <div className="add-bus">
+      <Header text="Add Bus Ride" headerClass="header" h1Class="h1-class" />
 
-      <form className="add-train-form" onSubmit={handleSubmit}>
+      <form className="add-bus-form" onSubmit={handleSubmit}>
         <div className="distance-date-container">
           <input
             className="add-trip-distanceinput"
@@ -71,7 +67,6 @@ export default function AddCarTripForm() {
             onChange={handleDistanceChange}
             required
           />
-
           <input
             type="date"
             className="add-trip-datepicker"
@@ -98,9 +93,9 @@ export default function AddCarTripForm() {
                 onChange={(e) => {
                   setRadioButton(1);
                 }}
-                name="rail"
+                name="bus"
               />{" "}
-              Intercity Rail
+              Long-distance Bus
             </label>
             <label>
               <input
@@ -109,9 +104,9 @@ export default function AddCarTripForm() {
                 onChange={(e) => {
                   setRadioButton(2);
                 }}
-                name="rail"
+                name="bus"
               />{" "}
-              Local Rail
+              Local Bus
             </label>
           </div>
         </div>

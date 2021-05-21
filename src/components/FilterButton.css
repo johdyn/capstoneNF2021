@@ -8,8 +8,9 @@
   border: none;
   transition: background-color 0.5s;
   transition: color 0.2s;
+  cursor: pointer;
 }
-.filter-button:hover {
+.filter-button :hover {
   background-color: #077a74;
   color: whitesmoke;
 }

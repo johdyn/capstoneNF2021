@@ -1,19 +1,21 @@
 .header {
-  height: 80px;
+  height: 70px;
   padding: 20px;
   position: fixed;
   top: 0;
   display: flex;
   z-index: 2;
+  border-radius: 0 0 20px 20px;
   justify-content: center;
   width: 100%;
-  background: rgb(6, 104, 101);
+
   background: linear-gradient(
-    90deg,
-    rgba(6, 104, 101, 1) 0%,
-    rgba(16, 124, 104, 1) 100%
+    180deg,
+    rgba(6, 104, 101, 0.2) 0%,
+    rgb(238, 245, 244, 0.2) 50%
   );
 }
 
 .h1-class {
+  color: whitesmoke;
 }

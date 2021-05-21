@@ -1,9 +1,11 @@
 .add-car {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column;
   height: 100%;
   width: 100vw;
   justify-content: space-around;
+  align-items: center;
+  gap: 30px;
 }
 .add-car-form {
   display: flex;
@@ -27,7 +29,7 @@
   border-radius: 5px;
   border: none;
   text-indent: 4px;
-  box-shadow: 2px 2px 4px;
+  box-shadow: 2px 2px 4px whitesmoke;
 }
 
 .add-car-trip-datepicker {
@@ -36,7 +38,7 @@
   border-radius: 5px;
   border: none;
   text-indent: 4px;
-  box-shadow: 2px 2px 4px;
+  box-shadow: 2px 2px 4px whitesmoke;
 }
 
 .add-car-trip-select {
@@ -59,19 +61,10 @@
   box-shadow: 2px 4px 1px;
 }
 
-.add-car-calculate-button {
-  width: 210px;
-  height: 47px;
-  margin: 10px;
-  background-color: var(--color-green);
-  border-radius: 25px;
-  font-family: "Helvetica Neue", sans-serif;
-  border: none;
-}
-
 .estimate-add-button-container {
   display: flex;
   flex-direction: column;
+  padding-top: 40px;
   position: relative;
   align-items: center;
   top: 270px;
@@ -92,5 +85,5 @@
 }
 
 .back-button-wrapper {
-  margin: 20px;
+  padding-top: 40px;
 }

@@ -1,8 +1,31 @@
-.summary-header {
-  padding: 20px;
+.summary {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  width: 100vw;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px;
 }
 
 .summary-content {
   display: flex;
-  justify-content: center;
+  flex-flow: column;
+  position: absolute;
+  top: 80px;
+  justify-content: space-around;
+}
+
+.green-layer {
+  position: fixed;
+  top: 0px;
+  height: 70px;
+  width: 100%;
+  z-index: 2;
+  border-radius: 0 0 20px 20px;
+  background: linear-gradient(
+    90deg,
+    rgba(6, 104, 101, 1) 0%,
+    rgba(16, 124, 104, 1) 100%
+  );
 }

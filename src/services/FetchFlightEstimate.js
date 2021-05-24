@@ -12,12 +12,14 @@ export default function fetchFlightEstimate(requestItem) {
   };
 
   const requestBody = JSON.stringify(tripData);
+  const apiKey = "Bearer " + process.env.REACT_APP_CARBON_INTERFACE_API_KEY;
+  console.log(apiKey);
   return fetch(url, {
     method: "POST",
 
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer n1wyCAIIbimLWWB6X1yfQ",
+      Authorization: apiKey,
     },
     body: requestBody,
   }).then((res) => res.json());

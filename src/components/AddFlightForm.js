@@ -67,7 +67,7 @@ export default function AddFlightForm() {
     };
 
     addFlightItemToLocalStorage(tripItem);
-    history.push("/");
+    setShowAddButton(false);
   }
 
   function handlePassengerChange(event) {
@@ -139,18 +139,18 @@ export default function AddFlightForm() {
         </div>
       </form>
       <div className="estimate-add-button-container">
-        {estimateObject !== undefined ? (
-          <p className="add-flight-emission-paragraph">
-            Emission in kg:
-            {estimateObject && estimateObject.data.attributes.carbon_kg}
-          </p>
-        ) : null}
         {showAddButton ? (
-          <Button
-            type="secondary"
-            text="Add to My Trips"
-            onClick={handleAddTrip}
-          ></Button>
+          <div>
+            <p className="add-flight-emission-paragraph">
+              Emission in kg:
+              {estimateObject && estimateObject.data.attributes.carbon_kg}
+            </p>{" "}
+            <Button
+              type="secondary"
+              text="Add to My Trips"
+              onClick={handleAddTrip}
+            ></Button>
+          </div>
         ) : null}
       </div>
       <div>

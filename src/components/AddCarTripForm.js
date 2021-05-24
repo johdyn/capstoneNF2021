@@ -74,6 +74,7 @@ export default function AddCarTripForm() {
       carbon,
     };
     addCarItemToLocalStorage(tripItem);
+    setShowAddButton(false);
   }
 
   function handleDistanceChange(event) {
@@ -114,7 +115,7 @@ export default function AddCarTripForm() {
     const selectedModel = vehicleModels.find((model) => {
       return (
         model.data.attributes.name === selectedName &&
-        model.data.attributes.year === selectedYear
+        model.data.attributes.year == selectedYear
       );
     });
     setSelectVehicleModel(
@@ -169,17 +170,18 @@ export default function AddCarTripForm() {
         </div>
       </form>
       <div className="estimate-add-button-container">
-        {carbonEstimate !== undefined ? (
-          <p className="add-car-emission-paragraph">
-            Emission in kg: {carbonEstimate}
-          </p>
-        ) : null}
         {showAddButton ? (
-          <Button
-            type="secondary"
-            text="Add to My Trips"
-            onClick={handleAddTrip}
-          ></Button>
+          <div>
+            <p className="add-car-emission-paragraph">
+              Emission in kg: {carbonEstimate}
+            </p>
+            <Button
+              id="add-button"
+              type="secondary"
+              text="Add to My Trips"
+              onClick={handleAddTrip}
+            ></Button>
+          </div>
         ) : null}
       </div>
       <div className="back-button-wrapper">

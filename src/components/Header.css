@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   display: flex;
-  z-index: 2;
+  z-index: 3;
   border-radius: 0 0 20px 20px;
   justify-content: center;
   width: 100%;

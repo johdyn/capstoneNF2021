@@ -6,7 +6,7 @@ import { addTrainItemToLocalStorage } from "../services/tripStorage";
 import Button from "./Button";
 import { calculateTrainEstimate } from "../services/calculateTrainEstimate";
 
-export default function AddCarTripForm() {
+export default function AddTrainForm() {
   const [distance, setDistance] = useState("");
   const [date, setDate] = useState(new Date());
   const [passengers, setPassengers] = useState();
@@ -35,6 +35,7 @@ export default function AddCarTripForm() {
     };
 
     addTrainItemToLocalStorage(tripItem);
+    setShowAddButton(false);
   }
 
   function handleDistanceChange(event) {
@@ -120,17 +121,17 @@ export default function AddCarTripForm() {
         </div>
       </form>
       <div className="estimate-add-button-container">
-        {carbonEstimate !== undefined ? (
-          <p className="add-car-emission-paragraph">
-            Emission in kg:{carbonEstimate.toFixed(2)}
-          </p>
-        ) : null}
         {showAddButton ? (
-          <Button
-            type="secondary"
-            text="Add to My Trips"
-            onClick={handleAddTrip}
-          ></Button>
+          <div>
+            <p className="add-car-emission-paragraph">
+              Emission in kg:{carbonEstimate.toFixed(2)}
+            </p>
+            <Button
+              type="secondary"
+              text="Add to My Trips"
+              onClick={handleAddTrip}
+            ></Button>
+          </div>
         ) : null}
       </div>
       <div>

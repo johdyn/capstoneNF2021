@@ -16,7 +16,7 @@
   /* font-family: "Courier New", Courier, monospace; */
   grid-template-columns: [width] 100vw;
   grid-template-rows: [main] auto;
-  background: rgb(6, 104, 101);
+  /* background: rgb(6, 104, 101); */
   background: linear-gradient(
     90deg,
     rgba(6, 104, 101, 1) 0%,
@@ -28,7 +28,7 @@
   grid-row: main;
   overflow-y: scroll;
   box-shadow: inset 0px 10px 10px rgba(0, 0, 0, 0.9);
-  background: rgb(6, 104, 101);
+  /* background: rgb(6, 104, 101); */
   background: linear-gradient(
     90deg,
     rgba(6, 104, 101, 1) 0%,

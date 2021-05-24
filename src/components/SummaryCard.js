@@ -1,21 +1,54 @@
 import "./SummaryCard.css";
 import DoughnutChart from "./DoughnutChart";
-import { calculateTransportSum } from "../services/calculateCo2Summary";
-
+import { calculateSum } from "../services/calculateSum";
+import { useState, useEffect } from "react";
 export default function SummaryCard() {
-  const flightSum = calculateTransportSum("flightItems");
-  const carSum = calculateTransportSum("carItems");
-  const trainSum = calculateTransportSum("trainItems");
-  const busSum = calculateTransportSum("busItems");
-  const totalSum = flightSum + carSum + trainSum + busSum;
+  const [selectedPeriod, setSelectedPeriod] = useState();
+  const [flightSum, setFlightSum] = useState();
+  const [carSum, setCarSum] = useState();
+  const [trainSum, setTrainSum] = useState();
+  const [busSum, setBusSum] = useState();
+  const [totalSum, setTotalSum] = useState();
 
+  useEffect(() => {
+    const totalSumObject = calculateSum("Total");
+    setTotalSum(
+      totalSumObject.flightSum +
+        totalSumObject.carSum +
+        totalSumObject.trainSum +
+        totalSumObject.busSum
+    );
+    setFlightSum(totalSumObject.flightSum);
+    setCarSum(totalSumObject.carSum);
+    setTrainSum(totalSumObject.trainSum);
+    setBusSum(totalSumObject.busSum);
+  }, []);
+
+  function handlePeriodChange(event) {
+    const value = event.target.value;
+    setSelectedPeriod(value);
+    const totalSumObject = calculateSum(value);
+    setTotalSum(
+      totalSumObject.flightSum +
+        totalSumObject.carSum +
+        totalSumObject.trainSum +
+        totalSumObject.busSum
+    );
+    setFlightSum(totalSumObject.flightSum);
+    setCarSum(totalSumObject.carSum);
+    setTrainSum(totalSumObject.trainSum);
+    setBusSum(totalSumObject.busSum);
+  }
   return (
     <div className="summary-card">
-      <input type="date" />
-      <select className="period-select-box">
-        <option>Choose a month or year</option>
-        {/* <option>This month</option>
-        <option>This year</option> */}
+      <select
+        value={selectedPeriod}
+        className="period-select-box"
+        onChange={handlePeriodChange}
+      >
+        <option>Total</option>
+        <option>The last year</option>
+        <option>The last month</option>
       </select>
       <h3>Your Total CO2: {totalSum} kg</h3>
       <div>

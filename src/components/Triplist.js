@@ -2,6 +2,7 @@ import FlightTripItem from "./FlightTripItem";
 import CarTripItem from "./CarTripItem";
 import TrainTripItem from "./TrainTripItem";
 import BusTripItem from "./BusTripItem";
+import EmptyTripList from "./EmptyTripList";
 import "./Triplist.css";
 import {
   getCarItemsFromLocalStorage,
@@ -50,7 +51,7 @@ export default function Triplist() {
 
   function renderFlightTripItems() {
     if (flightTripItems.length === 0) {
-      return "empty";
+      return <EmptyTripList />;
     }
     return flightTripItems
       .sort((a, b) => {
@@ -73,7 +74,7 @@ export default function Triplist() {
   }
   function rendercarTripItems() {
     if (carTripItems.length === 0) {
-      return "empty";
+      return <EmptyTripList />;
     }
     return carTripItems
       .sort((a, b) => {
@@ -96,7 +97,7 @@ export default function Triplist() {
 
   function renderTrainTripItems() {
     if (trainTripItems.length === 0) {
-      return "empty";
+      return <EmptyTripList />;
     }
     return trainTripItems
       .sort((a, b) => {
@@ -119,7 +120,7 @@ export default function Triplist() {
 
   function renderBusTripItems() {
     if (busTripItems.length === 0) {
-      return <h2>"empty"</h2>;
+      return <EmptyTripList />;
     }
     return busTripItems
       .sort((a, b) => {
@@ -148,13 +149,15 @@ export default function Triplist() {
         <IconButton type="train" onClick={() => setFilter("train")} />
         <IconButton type="bus" onClick={() => setFilter("bus")} />
       </div>
-      {filter === "flight"
-        ? renderFlightTripItems()
-        : filter === "car"
-        ? rendercarTripItems()
-        : filter === "train"
-        ? renderTrainTripItems()
-        : renderBusTripItems()}
+      <div className="item-container">
+        {filter === "flight"
+          ? renderFlightTripItems()
+          : filter === "car"
+          ? rendercarTripItems()
+          : filter === "train"
+          ? renderTrainTripItems()
+          : renderBusTripItems()}
+      </div>
     </div>
   );
 }

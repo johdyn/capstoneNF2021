@@ -1,4 +1,5 @@
 import "./AddTrip.css";
+import "./FilterButton.css";
 import FilterButton from "./FilterButton";
 import { useHistory } from "react-router-dom";
 import Header from "./Header";
@@ -8,6 +9,7 @@ export default function AddTrip() {
 
   return (
     <div className="add-trip">
+      <div className="green-layer"></div>
       <Header text="Add Trip" headerClass="header" h1Class="h1-class" />
       <div className="filter-button-container">
         <FilterButton

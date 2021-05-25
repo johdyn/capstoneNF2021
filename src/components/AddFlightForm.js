@@ -99,7 +99,7 @@ export default function AddFlightForm() {
 
   return (
     <div className="add-flight">
-      <Header text="Add Flight" headerClass="header" h1Class="h1-class" />
+      <Header text="Add Flight" />
       <form className="add-flight-form" onSubmit={handleSubmit}>
         <div className="passenger-date-container">
           <input
@@ -121,12 +121,14 @@ export default function AddFlightForm() {
         </div>
         <div className="select-box-container">
           <Select
+            styles={{
+              container: (provided) => ({ ...provided, boxShadow: "none" }),
+            }}
             className="select-class"
             placeholder="Departure airport"
             options={airportOptions}
             onChange={handleDepartureChange}
           />
-
           <Select
             className="select-class"
             placeholder="Destination airport"

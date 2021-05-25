@@ -4,8 +4,13 @@
   margin: 10px;
   background-color: #faffe4;
   border-radius: 25px;
-  font-family: "Helvetica Neue", sans-serif;
   border: none;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  cursor: pointer;
+}
+
+.btn:active {
+  box-shadow: inset 0px 0px 5px #000000;
 }
 
 .btn-secondary {
@@ -15,8 +20,7 @@
 .btn-tertiary {
   border-radius: 50px;
   background: #3ab19c;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
-  /* 20px 20px 60px #035752, -20px -20px 60px #057570; */
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .btn-back {
@@ -26,8 +30,13 @@
   margin-top: 80px;
   background-color: #3ab19c;
   border-radius: 25px;
-  font-family: "Helvetica Neue", sans-serif;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   border: none;
   transition: background-color 0.5s;
   transition: color 0.2s;
+  cursor: pointer;
+}
+
+.btn-back:active {
+  box-shadow: inset 0px 0px 5px #000000;
 }

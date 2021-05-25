@@ -1,5 +1,8 @@
-.Header {
-  padding: 20px;
+.add-trip {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
 }
 
 .green-layer {
@@ -16,13 +19,6 @@
   );
 }
 
-.add-trip {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 100%;
-}
-
 .filter-button-container {
   display: flex;
   flex-direction: column;
@@ -32,5 +28,4 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  /* z-index: 2; */
 }

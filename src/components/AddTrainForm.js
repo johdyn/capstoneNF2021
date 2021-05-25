@@ -60,7 +60,7 @@ export default function AddTrainForm() {
 
   return (
     <div className="add-train">
-      <Header text="Add Train Ride" headerClass="header" h1Class="h1-class" />
+      <Header text="Add Train Ride" />
 
       <form className="add-train-form" onSubmit={handleSubmit}>
         <div className="distance-date-container">

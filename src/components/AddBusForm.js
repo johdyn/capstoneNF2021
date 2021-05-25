@@ -56,12 +56,12 @@ export default function AddBusForm() {
 
   return (
     <div className="add-bus">
-      <Header text="Add Bus Ride" headerClass="header" h1Class="h1-class" />
+      <Header text="Add Bus Ride" />
 
       <form className="add-bus-form" onSubmit={handleSubmit}>
         <div className="distance-date-container">
           <input
-            className="add-trip-distanceinput"
+            className="add-trip-number-input"
             type="number"
             placeholder="Distance in km"
             value={distance}
@@ -75,11 +75,11 @@ export default function AddBusForm() {
             pattern="\d{4}-\d{2}-\d{2}"
             onChange={handleDateChange}
             required
-          ></input>
+          />
         </div>
         <div className="passenger-radio-button-container">
           <input
-            className="add-trip-distanceinput"
+            className="add-trip-number-input"
             type="number"
             placeholder="No. of Passengers"
             value={passengers}
@@ -87,7 +87,7 @@ export default function AddBusForm() {
             required
           />
           <div className="radio-button-container">
-            <label>
+            <label className="radio-text">
               <input
                 type="radio"
                 checked={1 === radioButton}
@@ -98,7 +98,7 @@ export default function AddBusForm() {
               />{" "}
               Long-distance Bus
             </label>
-            <label>
+            <label className="radio-text">
               <input
                 type="radio"
                 checked={2 === radioButton}
@@ -118,7 +118,7 @@ export default function AddBusForm() {
       <div className="estimate-add-button-container">
         {showAddButton ? (
           <div>
-            <p className="add-car-emission-paragraph">
+            <p className="add-bus-emission-paragraph">
               Emission in kg:{carbonEstimate.toFixed(2)}
             </p>{" "}
             <Button

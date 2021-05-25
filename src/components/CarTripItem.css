@@ -35,6 +35,10 @@
   font-size: 0.75rem;
 }
 
+.model-paragraph {
+  max-width: 150px;
+}
+
 .trip-item-delete {
   flex-grow: 1;
   font-size: 20px;
@@ -42,17 +46,3 @@
   right: 20px;
   cursor: pointer;
 }
-
-/* h3 {
-  font-size: 14px;
-} */
-
-/* .trip-item-list {
-  display: flex;
-  flex-flow: column wrap;
-  list-style-position: outside;
-  /* position: fixed;
-  /* right: 0;
-  top: 50%;
-  width: 8em;
-  margin-top: -2.5em; */

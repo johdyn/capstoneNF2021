@@ -7,26 +7,17 @@
   font-size: 14px;
 }
 
-.Triplist-button {
-  width: 110px;
-  height: 47px;
-  margin: 10px;
-  background-color: var(--color-purple);
-  border-radius: 25px;
-  font-family: "Helvetica Neue", sans-serif;
-  border: none;
-}
-
 .button-container {
   display: flex;
   flex-direction: row;
   position: absolute;
-  top: 80px;
+  top: 90px;
   z-index: 2;
-  /* background: rgb(6, 104, 101);
-  background: linear-gradient(
-    90deg,
-    rgba(6, 104, 101, 1) 0%,
-    rgba(16, 124, 104, 1) 100%
-  ); */
+}
+
+.item-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 50px;
 }

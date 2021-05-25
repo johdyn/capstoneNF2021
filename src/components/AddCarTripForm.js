@@ -130,7 +130,7 @@ export default function AddCarTripForm() {
 
   return (
     <div className="add-car">
-      <Header text="Add Car Ride" headerClass="header" h1Class="h1-class" />
+      <Header text="Add Car Ride" />
       <form className="add-car-form" onSubmit={handleSubmit}>
         <div className="distance-date-container">
           <input

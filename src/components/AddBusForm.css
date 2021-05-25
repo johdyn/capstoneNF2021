@@ -18,12 +18,11 @@
 
 .distance-date-container {
   display: flex;
-  flex-direction: row;
   gap: 10px;
   padding: 20px;
 }
 
-.add-trip-distanceinput {
+.add-trip-number-input {
   height: 30px;
   width: 150px;
   border-radius: 5px;
@@ -53,11 +52,17 @@
   justify-content: space-around;
   align-items: flex-start;
 }
-
+.radio-text {
+  color: whitesmoke;
+}
 .calculate-button-container {
   padding: 20px;
 }
 
-.add-car-emission-paragraph {
+.estimate-add-button-container {
+  top: 200px;
+}
+
+.add-bus-emission-paragraph {
   color: var(--color-white);
 }

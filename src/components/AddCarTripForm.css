@@ -64,20 +64,10 @@
 .estimate-add-button-container {
   display: flex;
   flex-direction: column;
-  padding-top: 40px;
+  padding-top: 80px;
   position: relative;
   align-items: center;
   top: 270px;
-}
-
-.add-car-addtrip-button {
-  width: 210px;
-  height: 47px;
-  margin: 10px;
-  background-color: var(--color-purple);
-  border-radius: 25px;
-  font-family: "Helvetica Neue", sans-serif;
-  border: none;
 }
 
 .add-car-emission-paragraph {

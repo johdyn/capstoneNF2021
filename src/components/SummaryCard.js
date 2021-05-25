@@ -50,7 +50,7 @@ export default function SummaryCard() {
         <option>The last year</option>
         <option>The last month</option>
       </select>
-      <h3>Your Total CO2: {totalSum} kg</h3>
+      <h3>Your CO2 emission: {totalSum} kg</h3>
       <div>
         <DoughnutChart
           flightSum={flightSum}
@@ -59,7 +59,7 @@ export default function SummaryCard() {
           busSum={busSum}
         />
       </div>
-      <p>Sustainable Annual Budget: 1.500 kg</p>
+      {/* <p>Sustainable Annual Budget: 1.500 kg</p> */}
     </div>
   );
 }

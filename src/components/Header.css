@@ -1,3 +1,17 @@
+.background-container {
+  position: fixed;
+  top: 0px;
+  height: 70px;
+  width: 100%;
+  z-index: 2;
+  border-radius: 0 0 20px 20px;
+  background: linear-gradient(
+    90deg,
+    rgba(6, 104, 101, 1) 0%,
+    rgba(16, 124, 104, 1) 100%
+  );
+}
+
 .header {
   height: 70px;
   padding: 20px;
@@ -17,5 +31,8 @@
 }
 
 .h1-class {
-  color: whitesmoke;
+  color: #fff0f5;
+  font-family: Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 2rem;
+  font-weight: 600;
 }

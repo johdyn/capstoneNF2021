@@ -4,21 +4,15 @@
   margin: 10px;
   background-color: #3ab19c;
   border-radius: 25px;
-  font-family: "Helvetica Neue", sans-serif;
+
   border: none;
   transition: background-color 0.2s;
   transition: color 0.2s;
   cursor: pointer;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 .filter-button:active {
   background-color: #077a74;
   color: whitesmoke;
+  box-shadow: inset 0px 0px 5px #000000;
 }
-/* #077a74 */
-/* .filter-button:active {
-  border: whitesmoke solid 1px;
-  color: whitesmoke;
-} */
-/* .filter-button:focus {
-  background-color: blue;
-} */

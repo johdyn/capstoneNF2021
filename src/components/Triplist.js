@@ -51,7 +51,12 @@ export default function Triplist() {
 
   function renderFlightTripItems() {
     if (flightTripItems.length === 0) {
-      return <EmptyTripList />;
+      return (
+        <EmptyTripList
+          text="Add your first flight!"
+          path="/add-trip/add-flight"
+        />
+      );
     }
     return flightTripItems
       .sort((a, b) => {
@@ -74,7 +79,12 @@ export default function Triplist() {
   }
   function rendercarTripItems() {
     if (carTripItems.length === 0) {
-      return <EmptyTripList />;
+      return (
+        <EmptyTripList
+          text="Add your first car ride!"
+          path="/add-trip/add-car"
+        />
+      );
     }
     return carTripItems
       .sort((a, b) => {
@@ -97,7 +107,12 @@ export default function Triplist() {
 
   function renderTrainTripItems() {
     if (trainTripItems.length === 0) {
-      return <EmptyTripList />;
+      return (
+        <EmptyTripList
+          text="Add your first train ride!"
+          path="/add-trip/add-train"
+        />
+      );
     }
     return trainTripItems
       .sort((a, b) => {
@@ -120,7 +135,12 @@ export default function Triplist() {
 
   function renderBusTripItems() {
     if (busTripItems.length === 0) {
-      return <EmptyTripList />;
+      return (
+        <EmptyTripList
+          text="Add your first bus ride!"
+          path="/add-trip/add-bus"
+        />
+      );
     }
     return busTripItems
       .sort((a, b) => {

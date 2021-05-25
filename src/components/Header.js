@@ -1,8 +1,10 @@
 import "./Header.css";
-export default function Header({ text, headerClass, h1Class }) {
+export default function Header({ text }) {
   return (
-    <header className={headerClass}>
-      <h1 className={h1Class}>{text}</h1>
-    </header>
+    <div className="background-container">
+      <header className="header">
+        <h1 className="h1-class">{text}</h1>
+      </header>
+    </div>
   );
 }

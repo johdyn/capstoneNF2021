@@ -3,10 +3,7 @@ import "./Home.css";
 import Button from "./Button";
 import Header from "./Header";
 import SummaryCard from "./SummaryCard";
-import { useHistory } from "react-router-dom";
 export default function Summary() {
-  let history = useHistory();
-
   return (
     <div className="summary">
       <div className="green-layer"></div>

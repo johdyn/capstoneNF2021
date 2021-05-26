@@ -7,7 +7,6 @@ import { NavLink, useLocation } from "react-router-dom";
 export default function Navigation() {
   const { pathname } = useLocation();
 
-  console.log(pathname);
   return (
     <nav className="navigation-bar">
       <NavLink exact to="/" activeClassName="selected">

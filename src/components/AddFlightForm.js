@@ -5,9 +5,8 @@ import { useHistory } from "react-router-dom";
 import Button from "./Button";
 import Header from "./Header";
 import fetchFlightEstimate from "../services/FetchFlightEstimate";
-
-import Select from "react-select";
-import airportData from "../services/airports.json";
+import SelectInput from "./SelectInput";
+import airportData from "../services/airports-filtered.json";
 
 export default function AddFlightForm() {
   const [passengers, setPassengers] = useState();
@@ -22,14 +21,10 @@ export default function AddFlightForm() {
 
   useEffect(() => {
     setAirportOptions(
-      airports
-        .filter((item) => {
-          return item.name !== null;
-        })
-        .map((item) => {
-          let placeHolder = `${item.iata} (${item.name})`;
-          return { value: placeHolder, label: placeHolder };
-        })
+      airports.map((airport) => {
+        let placeholder = `${airport.iata} (${airport.name})`;
+        return { value: placeholder, label: placeholder };
+      })
     );
   }, [airports]);
 
@@ -48,10 +43,16 @@ export default function AddFlightForm() {
         airportCodeDeparture,
         airportCodeDestination,
       };
-      fetchFlightEstimate(requestItem).then((estimate) => {
-        setEstimateObject(estimate);
-        setShowAddButton(true);
-      });
+      fetchFlightEstimate(requestItem)
+        .then((estimate) => {
+          setEstimateObject(estimate);
+          setShowAddButton(true);
+        })
+        .catch((error) => {
+          alert(
+            "One of the airport codes is not valid. Please try another one!"
+          );
+        });
     }
   }
   function handleAddTrip() {
@@ -120,17 +121,14 @@ export default function AddFlightForm() {
           ></input>
         </div>
         <div className="select-box-container">
-          <Select
-            styles={{
-              container: (provided) => ({ ...provided, boxShadow: "none" }),
-            }}
-            className="select-class"
+          <SelectInput
+            className="select-input"
             placeholder="Departure airport"
             options={airportOptions}
             onChange={handleDepartureChange}
           />
-          <Select
-            className="select-class"
+          <SelectInput
+            className="select-input"
             placeholder="Destination airport"
             options={airportOptions}
             onChange={handleDestinationChange}

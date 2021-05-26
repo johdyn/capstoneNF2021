@@ -1,6 +1,5 @@
 import "./EmptyTripList.css";
 import { useHistory } from "react-router-dom";
-import { FaPlus } from "react-icons/fa";
 
 export default function EmptyTripList({ text, path }) {
   let history = useHistory();

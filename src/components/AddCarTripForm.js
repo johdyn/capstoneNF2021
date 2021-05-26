@@ -1,5 +1,4 @@
 import "./AddCarTripForm.css";
-import Select from "react-select";
 import Header from "./Header";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
@@ -10,6 +9,7 @@ import {
   fetchVehicleMakes,
   fetchVehicleModels,
 } from "../services/FetchVehicleEstimate";
+import SelectInput from "./SelectInput";
 
 export default function AddCarTripForm() {
   const [distance, setDistance] = useState("");
@@ -151,15 +151,14 @@ export default function AddCarTripForm() {
           ></input>
         </div>
         <div className="select-box-container">
-          <Select
-            className="select-class"
+          <SelectInput
+            className="select-input"
             placeholder="Vehicle Makes"
             options={renderVehicleMakes()}
             onChange={handleVehicleMakeChange}
-            required
           />
-          <Select
-            className="select-class"
+          <SelectInput
+            className="select-input"
             placeholder="Vehicle Models"
             options={renderVehicleModels()}
             onChange={handleVehicleModelChange}

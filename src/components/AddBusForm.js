@@ -56,7 +56,7 @@ export default function AddBusForm() {
 
   return (
     <div className="add-bus">
-      <Header text="Add Bus Ride" />
+      <Header text="Add Bus Trip" />
 
       <form className="add-bus-form" onSubmit={handleSubmit}>
         <div className="distance-date-container">
@@ -112,7 +112,7 @@ export default function AddBusForm() {
           </div>
         </div>
         <div className="calculate-button-container">
-          <Button type="primary" text="Calculate CO2 emission"></Button>
+          <Button variety="primary" text="Calculate CO2 emission"></Button>
         </div>
       </form>
       <div className="estimate-add-button-container">
@@ -122,7 +122,7 @@ export default function AddBusForm() {
               Emission in kg:{carbonEstimate.toFixed(2)}
             </p>{" "}
             <Button
-              type="secondary"
+              variety="secondary"
               text="Add to My Trips"
               onClick={handleAddTrip}
             ></Button>
@@ -130,7 +130,7 @@ export default function AddBusForm() {
         ) : null}
       </div>
       <div>
-        <Button type="back" text="Back" onClick={handleBackClick} />
+        <Button variety="back" text="Back" onClick={handleBackClick} />
       </div>
     </div>
   );

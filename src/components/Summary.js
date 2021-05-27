@@ -12,7 +12,7 @@ export default function Summary() {
         <SummaryCard />
         <div className="compensate-button-wrapper">
           <Button
-            type="tertiary"
+            variety="tertiary"
             text="Compensate"
             onClick={() => {
               window.open("https://www.atmosfair.de/en/offset/fix/", "_blank");

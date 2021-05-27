@@ -26,13 +26,13 @@ export default function AddTrip() {
         />
 
         <FilterButton
-          text="Add Train Ride"
+          text="Add Train Journey"
           onClick={(e) => {
             history.push("add-trip/add-train");
           }}
         />
         <FilterButton
-          text="Add Bus Ride"
+          text="Add Bus Trip"
           onClick={(e) => {
             history.push("add-trip/add-bus");
           }}

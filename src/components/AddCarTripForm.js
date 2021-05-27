@@ -134,14 +134,6 @@ export default function AddCarTripForm() {
       <form className="add-car-form" onSubmit={handleSubmit}>
         <div className="distance-date-container">
           <input
-            className="add-car-trip-distanceinput"
-            type="number"
-            placeholder="Distance in km"
-            value={distance}
-            onChange={handleDistanceChange}
-            required
-          />
-          <input
             type="date"
             className="add-car-trip-datepicker"
             value={date}
@@ -149,6 +141,14 @@ export default function AddCarTripForm() {
             onChange={handleDateChange}
             required
           ></input>
+          <input
+            className="add-car-trip-distanceinput"
+            type="number"
+            placeholder="Distance in km"
+            value={distance}
+            onChange={handleDistanceChange}
+            required
+          />
         </div>
         <div className="select-box-container">
           <SelectInput
@@ -165,7 +165,7 @@ export default function AddCarTripForm() {
           />
         </div>
         <div>
-          <Button type="primary" text="Calculate CO2 emission"></Button>
+          <Button variety="primary" text="Calculate CO2 estimate"></Button>
         </div>
       </form>
       <div className="estimate-add-button-container">
@@ -176,15 +176,15 @@ export default function AddCarTripForm() {
             </p>
             <Button
               id="add-button"
-              type="secondary"
-              text="Add to My Trips"
+              variety="secondary"
+              text="Save"
               onClick={handleAddTrip}
             ></Button>
           </div>
         ) : null}
       </div>
       <div className="back-button-wrapper">
-        <Button type="back" text="Back" onClick={handleBackClick} />
+        <Button variety="back" text="Back" onClick={handleBackClick} />
       </div>
     </div>
   );

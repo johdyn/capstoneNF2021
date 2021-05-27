@@ -6,7 +6,7 @@ export default function MyTrips() {
   return (
     <div>
       <div className="green-layer"></div>
-      <Header text="My Trips" />
+      <Header text="CO2 Tracker" />
       <div className="tripList-container">
         <Triplist />
       </div>

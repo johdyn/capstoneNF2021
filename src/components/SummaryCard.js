@@ -54,7 +54,7 @@ export default function SummaryCard() {
         <option>The last year</option>
         <option>The last month</option>
       </select>
-      <h3>CO2 emission: {totalSum} kg</h3>
+      <h3>CO2 emissions: {totalSum} kg</h3>
       <div>
         <DoughnutChart
           flightSum={flightSum}

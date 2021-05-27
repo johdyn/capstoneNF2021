@@ -60,7 +60,7 @@ export default function AddTrainForm() {
 
   return (
     <div className="add-train">
-      <Header text="Add Train Ride" />
+      <Header text="Add Train Journey" />
 
       <form className="add-train-form" onSubmit={handleSubmit}>
         <div className="distance-date-container">
@@ -117,7 +117,7 @@ export default function AddTrainForm() {
           </div>
         </div>
         <div className="calculate-button-container">
-          <Button type="primary" text="Calculate CO2 emission"></Button>
+          <Button variety="primary" text="Calculate CO2 emission"></Button>
         </div>
       </form>
       <div className="estimate-add-button-container">
@@ -127,7 +127,7 @@ export default function AddTrainForm() {
               Emission in kg:{carbonEstimate.toFixed(2)}
             </p>
             <Button
-              type="secondary"
+              variety="secondary"
               text="Add to My Trips"
               onClick={handleAddTrip}
             ></Button>
@@ -135,7 +135,7 @@ export default function AddTrainForm() {
         ) : null}
       </div>
       <div>
-        <Button type="back" text="Back" onClick={handleBackClick} />
+        <Button variety="back" text="Back" onClick={handleBackClick} />
       </div>
     </div>
   );

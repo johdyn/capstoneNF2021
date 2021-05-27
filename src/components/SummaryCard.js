@@ -10,8 +10,12 @@ export default function SummaryCard() {
   const [busSum, setBusSum] = useState();
   const [totalSum, setTotalSum] = useState();
 
+  const flightPercentage = (flightSum / totalSum) * 100;
+  console.log(flightPercentage);
+
   useEffect(() => {
     const totalSumObject = calculateSum("Total");
+
     setTotalSum(
       totalSumObject.flightSum +
         totalSumObject.carSum +
@@ -50,7 +54,7 @@ export default function SummaryCard() {
         <option>The last year</option>
         <option>The last month</option>
       </select>
-      <h3>Your CO2 emission: {totalSum} kg</h3>
+      <h3>CO2 emission: {totalSum} kg</h3>
       <div>
         <DoughnutChart
           flightSum={flightSum}

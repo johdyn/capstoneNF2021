@@ -18,6 +18,7 @@ export default function AddFlightForm() {
   const [airportOptions, setAirportOptions] = useState([]);
   const history = useHistory();
   const airports = airportData;
+  console.log(showAddButton);
 
   useEffect(() => {
     setAirportOptions(
@@ -30,7 +31,7 @@ export default function AddFlightForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-
+    console.log("submit");
     if (departure === "" || destination === "") {
       alert("Please choose departure and destination airports");
     } else {
@@ -104,19 +105,19 @@ export default function AddFlightForm() {
       <form className="add-flight-form" onSubmit={handleSubmit}>
         <div className="passenger-date-container">
           <input
-            type="number"
-            className="add-flight-passengers"
-            placeholder="No. of passengers"
-            value={passengers}
-            onChange={handlePassengerChange}
-            required
-          ></input>
-          <input
             type="date"
             className="add-flight-datepicker"
             value={date}
             pattern="\d{4}-\d{2}-\d{2}"
             onChange={handleDateChange}
+            required
+          ></input>
+          <input
+            type="number"
+            className="add-flight-passengers"
+            placeholder="No. of passengers"
+            value={passengers}
+            onChange={handlePassengerChange}
             required
           ></input>
         </div>
@@ -135,27 +136,33 @@ export default function AddFlightForm() {
           />
         </div>
         <div>
-          <Button type="primary" text="Calculate CO2 emission"></Button>
+          <Button variety="primary" text="Calculate CO2 estimate"></Button>
         </div>
-      </form>
-      <div className="estimate-add-button-container">
-        {showAddButton ? (
+        <div
+          className={
+            showAddButton
+              ? "flight-estimate-add-button-container"
+              : "flight-estimate-add-button-container hide-container"
+          }
+        >
           <div>
             <p className="add-flight-emission-paragraph">
-              Emission in kg:
-              {estimateObject && estimateObject.data.attributes.carbon_kg}
+              CO2 Estimate:{" "}
+              {estimateObject &&
+                estimateObject.data.attributes.carbon_kg.toFixed(0)}{" "}
+              kg
             </p>{" "}
             <Button
-              type="secondary"
-              text="Add to My Trips"
+              variety="secondary"
+              text="Save"
               onClick={handleAddTrip}
             ></Button>
           </div>
-        ) : null}
-      </div>
-      <div>
-        <Button type="back" text="Back" onClick={handleBackClick} />
-      </div>
+        </div>
+        <div>
+          <Button variety="back" text="Back" onClick={handleBackClick} />
+        </div>
+      </form>
     </div>
   );
 }

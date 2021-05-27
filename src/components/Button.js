@@ -1,21 +1,23 @@
 import "./Button.css";
-export default function Button({ type, text, onClick }) {
+export default function Button({ type, variety, text, onClick }) {
   let className = "";
-  if (type === "primary") {
+  if (variety === "primary") {
+    type = "submit";
     className = "btn";
   }
-  if (type === "secondary") {
+  if (variety === "secondary") {
+    type = "reset";
     className = "btn btn-secondary";
   }
-  if (type === "tertiary") {
+  if (variety === "tertiary") {
     className = "btn btn-tertiary";
   }
-  if (type === "back") {
+  if (variety === "back") {
     className = "btn-back";
   }
 
   return (
-    <button className={className} onClick={onClick}>
+    <button type={type} className={className} onClick={onClick}>
       {text}
     </button>
   );

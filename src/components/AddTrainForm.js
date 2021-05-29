@@ -12,7 +12,7 @@ export default function AddTrainForm() {
   const [passengers, setPassengers] = useState();
   const [carbonEstimate, setCarbonEstimate] = useState();
   const [showAddButton, setShowAddButton] = useState(false);
-  const [radioButton, setRadioButton] = useState();
+  const [radioButton, setRadioButton] = useState(1);
   const history = useHistory();
 
   function handleSubmit(event) {
@@ -101,7 +101,7 @@ export default function AddTrainForm() {
                 }}
                 name="rail"
               />{" "}
-              Intercity Rail
+              Local Rail
             </label>
             <label>
               <input
@@ -112,7 +112,7 @@ export default function AddTrainForm() {
                 }}
                 name="rail"
               />{" "}
-              Local Rail
+              Intercity Rail
             </label>
           </div>
         </div>

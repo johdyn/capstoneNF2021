@@ -84,7 +84,7 @@ export default function AddTrainForm() {
         </div>
         <div className="passenger-radio-button-container">
           <input
-            className="add-car-trip-distanceinput"
+            className="train-passenger-input"
             type="number"
             placeholder="No. of Passengers"
             value={passengers}
@@ -92,7 +92,7 @@ export default function AddTrainForm() {
             required
           />
           <div className="radio-button-container">
-            <label>
+            <label className="radio-text">
               <input
                 type="radio"
                 checked={1 === radioButton}
@@ -103,7 +103,7 @@ export default function AddTrainForm() {
               />{" "}
               Local Rail
             </label>
-            <label>
+            <label className="radio-text">
               <input
                 type="radio"
                 checked={2 === radioButton}

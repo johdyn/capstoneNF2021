@@ -9,12 +9,12 @@ export function calculateSum(period) {
     carSum = calculateTotalSum("carItems");
     trainSum = calculateTotalSum("trainItems");
     busSum = calculateTotalSum("busItems");
-  } else if (period === "The last year") {
+  } else if (period === "Last year") {
     flightSum = calculateYearSum("flightItems");
     carSum = calculateYearSum("carItems");
     trainSum = calculateYearSum("trainItems");
     busSum = calculateYearSum("busItems");
-  } else if (period === "The last month") {
+  } else if (period === "Last month") {
     flightSum = calculateMonthSum("flightItems");
     carSum = calculateMonthSum("carItems");
     trainSum = calculateMonthSum("trainItems");

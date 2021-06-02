@@ -51,8 +51,8 @@ export default function SummaryCard() {
         onChange={handlePeriodChange}
       >
         <option>Total</option>
-        <option>The last year</option>
-        <option>The last month</option>
+        <option>Last year</option>
+        <option>Last month</option>
       </select>
       <h3>CO2 emissions: {totalSum} kg</h3>
       <div>

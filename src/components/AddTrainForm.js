@@ -12,7 +12,7 @@ export default function AddTrainForm() {
   const [passengers, setPassengers] = useState();
   const [carbonEstimate, setCarbonEstimate] = useState();
   const [showAddButton, setShowAddButton] = useState(false);
-  const [radioButton, setRadioButton] = useState();
+  const [radioButton, setRadioButton] = useState(1);
   const history = useHistory();
 
   function handleSubmit(event) {
@@ -84,7 +84,7 @@ export default function AddTrainForm() {
         </div>
         <div className="passenger-radio-button-container">
           <input
-            className="add-car-trip-distanceinput"
+            className="train-passenger-input"
             type="number"
             placeholder="No. of Passengers"
             value={passengers}
@@ -92,7 +92,7 @@ export default function AddTrainForm() {
             required
           />
           <div className="radio-button-container">
-            <label>
+            <label className="radio-text">
               <input
                 type="radio"
                 checked={1 === radioButton}
@@ -101,9 +101,9 @@ export default function AddTrainForm() {
                 }}
                 name="rail"
               />{" "}
-              Intercity Rail
+              Local Rail
             </label>
-            <label>
+            <label className="radio-text">
               <input
                 type="radio"
                 checked={2 === radioButton}
@@ -112,7 +112,7 @@ export default function AddTrainForm() {
                 }}
                 name="rail"
               />{" "}
-              Local Rail
+              Intercity Rail
             </label>
           </div>
         </div>

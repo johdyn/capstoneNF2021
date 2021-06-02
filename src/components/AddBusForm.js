@@ -12,7 +12,7 @@ export default function AddBusForm() {
   const [passengers, setPassengers] = useState();
   const [carbonEstimate, setCarbonEstimate] = useState();
   const [showAddButton, setShowAddButton] = useState(false);
-  const [radioButton, setRadioButton] = useState();
+  const [radioButton, setRadioButton] = useState(1);
   const history = useHistory();
 
   function handleSubmit(event) {
@@ -96,7 +96,7 @@ export default function AddBusForm() {
                 }}
                 name="bus"
               />{" "}
-              Long-distance Bus
+              Local Bus
             </label>
             <label className="radio-text">
               <input
@@ -107,7 +107,7 @@ export default function AddBusForm() {
                 }}
                 name="bus"
               />{" "}
-              Local Bus
+              Long-distance Bus
             </label>
           </div>
         </div>

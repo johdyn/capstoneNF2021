@@ -21,6 +21,9 @@
   box-shadow: 1px 1px 4px whitesmoke;
 }
 
+.carbon-paragraph {
+}
+
 @media only screen and (max-device-height: 640px) {
   .summary-card {
     height: 300px;

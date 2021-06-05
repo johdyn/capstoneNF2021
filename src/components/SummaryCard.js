@@ -10,9 +10,6 @@ export default function SummaryCard() {
   const [busSum, setBusSum] = useState();
   const [totalSum, setTotalSum] = useState();
 
-  const flightPercentage = (flightSum / totalSum) * 100;
-  console.log(flightPercentage);
-
   useEffect(() => {
     const totalSumObject = calculateSum("Total");
 
@@ -43,6 +40,22 @@ export default function SummaryCard() {
     setTrainSum(totalSumObject.trainSum);
     setBusSum(totalSumObject.busSum);
   }
+
+  function renderUnderSustainable() {
+    const difference = 1500 - totalSum;
+    console.log(difference);
+    return `You have ${difference} kg left until you exceed your annual carbon budget (1.500 kg)`;
+  }
+
+  function renderOverSustainable() {
+    const percentage = (totalSum / 1500) * 100 - 100;
+    console.log(percentage);
+
+    return `You are ${percentage.toFixed(
+      0
+    )}% over your annual carbon budget (1.500 kg)`;
+  }
+
   return (
     <div className="summary-card">
       <select
@@ -63,7 +76,9 @@ export default function SummaryCard() {
           busSum={busSum}
         />
       </div>
-      {/* <p>Sustainable Annual Budget: 1.500 kg</p> */}
+      <div className="carbon-paragraph">
+        {totalSum <= 1500 ? renderUnderSustainable() : renderOverSustainable()}
+      </div>
     </div>
   );
 }

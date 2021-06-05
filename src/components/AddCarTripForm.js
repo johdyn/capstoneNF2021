@@ -167,12 +167,17 @@ export default function AddCarTripForm() {
         <div>
           <Button variety="primary" text="Calculate CO2 estimate"></Button>
         </div>
-      </form>
-      <div className="estimate-add-button-container">
-        {showAddButton ? (
+
+        <div
+          className={
+            showAddButton
+              ? "estimate-add-button-container"
+              : "estimate-add-button-container hide-container"
+          }
+        >
           <div>
             <p className="add-car-emission-paragraph">
-              Emission in kg: {carbonEstimate}
+              CO2 Estimate: {carbonEstimate && carbonEstimate.toFixed(0)} kg
             </p>
             <Button
               id="add-button"
@@ -181,11 +186,11 @@ export default function AddCarTripForm() {
               onClick={handleAddTrip}
             ></Button>
           </div>
-        ) : null}
-      </div>
-      <div className="back-button-wrapper">
-        <Button variety="back" text="Back" onClick={handleBackClick} />
-      </div>
+        </div>
+        <div>
+          <Button variety="back" text="Back" onClick={handleBackClick} />
+        </div>
+      </form>
     </div>
   );
 }

@@ -64,16 +64,14 @@
 .estimate-add-button-container {
   display: flex;
   flex-direction: column;
-  padding-top: 80px;
-  position: relative;
+  padding-top: 20px;
   align-items: center;
-  top: 270px;
 }
 
 .add-car-emission-paragraph {
   color: var(--color-white);
 }
 
-.back-button-wrapper {
-  padding-top: 40px;
+.hide-container {
+  display: none;
 }

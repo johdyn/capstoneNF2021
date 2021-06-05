@@ -18,7 +18,6 @@ export default function AddFlightForm() {
   const [airportOptions, setAirportOptions] = useState([]);
   const history = useHistory();
   const airports = airportData;
-  console.log(showAddButton);
 
   useEffect(() => {
     setAirportOptions(
@@ -31,7 +30,7 @@ export default function AddFlightForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("submit");
+
     if (departure === "" || destination === "") {
       alert("Please choose departure and destination airports");
     } else {

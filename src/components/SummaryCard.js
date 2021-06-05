@@ -10,9 +10,6 @@ export default function SummaryCard() {
   const [busSum, setBusSum] = useState();
   const [totalSum, setTotalSum] = useState();
 
-  const flightPercentage = (flightSum / totalSum) * 100;
-  console.log(flightPercentage);
-
   useEffect(() => {
     const totalSumObject = calculateSum("Total");
 

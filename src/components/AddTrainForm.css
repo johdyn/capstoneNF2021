@@ -11,7 +11,7 @@
 .add-train-form {
   display: flex;
   flex-flow: column;
-  position: absolute;
+  position: fixed;
   top: 80px;
   justify-content: space-around;
 }

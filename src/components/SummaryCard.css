@@ -22,6 +22,8 @@
 }
 
 .carbon-paragraph {
+  font-size: 0.9rem;
+  width: 250px;
 }
 
 @media only screen and (max-device-height: 640px) {

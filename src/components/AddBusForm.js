@@ -114,24 +114,24 @@ export default function AddBusForm() {
         <div className="calculate-button-container">
           <Button variety="primary" text="Calculate CO2 emission"></Button>
         </div>
+        <div className="estimate-add-button-container">
+          {showAddButton ? (
+            <div>
+              <p className="add-bus-emission-paragraph">
+                CO2 Estimate: {carbonEstimate.toFixed(1)} kg
+              </p>{" "}
+              <Button
+                variety="secondary"
+                text="Add to My Trips"
+                onClick={handleAddTrip}
+              ></Button>
+            </div>
+          ) : null}
+        </div>
+        <div>
+          <Button variety="back" text="Back" onClick={handleBackClick} />
+        </div>
       </form>
-      <div className="estimate-add-button-container">
-        {showAddButton ? (
-          <div>
-            <p className="add-bus-emission-paragraph">
-              Emission in kg:{carbonEstimate.toFixed(2)}
-            </p>{" "}
-            <Button
-              variety="secondary"
-              text="Add to My Trips"
-              onClick={handleAddTrip}
-            ></Button>
-          </div>
-        ) : null}
-      </div>
-      <div>
-        <Button variety="back" text="Back" onClick={handleBackClick} />
-      </div>
     </div>
   );
 }

@@ -44,7 +44,7 @@ export default function SummaryCard() {
   function renderUnderSustainable() {
     const difference = 1500 - totalSum;
     console.log(difference);
-    return `You have ${difference} kg left until you exceed your annual carbon budget (1.500 kg)`;
+    return `You have ${difference} kg left until you exceed the climate compatible annual carbon budget (1.500 kg)`;
   }
 
   function renderOverSustainable() {
@@ -53,7 +53,7 @@ export default function SummaryCard() {
 
     return `You are ${percentage.toFixed(
       0
-    )}% over your annual carbon budget (1.500 kg)`;
+    )}% over the climate compatible annual carbon budget (1.500 kg)`;
   }
 
   return (

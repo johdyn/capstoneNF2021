@@ -61,19 +61,19 @@ export default function AddBusForm() {
       <form className="add-bus-form" onSubmit={handleSubmit}>
         <div className="distance-date-container">
           <input
-            className="add-trip-number-input"
-            type="number"
-            placeholder="Distance in km"
-            value={distance}
-            onChange={handleDistanceChange}
-            required
-          />
-          <input
             type="date"
             className="add-trip-datepicker"
             value={date}
             pattern="\d{4}-\d{2}-\d{2}"
             onChange={handleDateChange}
+            required
+          />
+          <input
+            className="add-trip-number-input"
+            type="number"
+            placeholder="Distance in km"
+            value={distance}
+            onChange={handleDistanceChange}
             required
           />
         </div>
@@ -122,7 +122,7 @@ export default function AddBusForm() {
               </p>{" "}
               <Button
                 variety="secondary"
-                text="Add to My Trips"
+                text="Save"
                 onClick={handleAddTrip}
               ></Button>
             </div>

@@ -65,6 +65,14 @@ export default function AddTrainForm() {
       <form className="add-train-form" onSubmit={handleSubmit}>
         <div className="distance-date-container">
           <input
+            type="date"
+            className="add-trip-datepicker"
+            value={date}
+            pattern="\d{4}-\d{2}-\d{2}"
+            onChange={handleDateChange}
+            required
+          />
+          <input
             className="add-trip-distanceinput"
             type="number"
             placeholder="Distance in km"
@@ -72,15 +80,6 @@ export default function AddTrainForm() {
             onChange={handleDistanceChange}
             required
           />
-
-          <input
-            type="date"
-            className="add-trip-datepicker"
-            value={date}
-            pattern="\d{4}-\d{2}-\d{2}"
-            onChange={handleDateChange}
-            required
-          ></input>
         </div>
         <div className="passenger-radio-button-container">
           <input
@@ -127,7 +126,7 @@ export default function AddTrainForm() {
               </p>
               <Button
                 variety="secondary"
-                text="Add to My Trips"
+                text="Save"
                 onClick={handleAddTrip}
               ></Button>
             </div>

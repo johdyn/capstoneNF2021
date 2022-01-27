@@ -1,5 +1,4 @@
 import "./Summary.css";
-import "./Home.css";
 import Button from "./Button";
 import Header from "./Header";
 import SummaryCard from "./SummaryCard";

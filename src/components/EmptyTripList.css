@@ -1,14 +1,4 @@
 .empty-state-add-button {
-  /* border: none;
-  width: 80px;
-  height: 80px;
-  border-radius: 24px;
-  /* background: #41cd8c; */
-  /* cursor: pointer;
-  border-radius: 50px;
-  border-radius: 24px;
-  background: linear-gradient(145deg, #0c7d6e, #0a695d);
-  box-shadow: 9px 9px 18px #096358, -9px -9px 18px #0d8776; */
   width: 200px;
   height: 47px;
   margin: 10px;
@@ -19,12 +9,6 @@
   transition: color 0.2s ease-out;
   cursor: pointer;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; */
-  /* box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
-    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
 }
 
 .empty-state-add-button:active {
@@ -36,27 +20,3 @@
   font-size: 30px;
   color: whitesmoke;
 }
-
-/* .add-to-routine-button {
-    position: relative;
-    right: 5%;
-    color: var(--color-two-opaque);
-    
-    box-shadow: 3px 3px 9px var(--color-two-opaque),
-      -3px -3px 19px var(--color-one-opaque);
-    border: none;
-    border-radius: 10px;
-    font-size: 1.7rem;
-    line-height: 2rem;
-    width: 45px;
-    height: 45px;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 300ms ease-in-out;
-  }
-  
-  .add-to-routine-button:hover {
-    transform: rotate(180deg);
-  } */
